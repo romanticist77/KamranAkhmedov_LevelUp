@@ -20,7 +20,7 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public BigDecimal divide(BigDecimal a, BigDecimal b) {
-        if(b.compareTo(new BigDecimal("0.0")) == 0) {
+        if (b.compareTo(new BigDecimal("0.0")) == 0) {
             throw new IllegalArgumentException("Cannot divide to 0");
         }
         return a.divide(b);
