@@ -1,7 +1,8 @@
 package ru.levelup.at.lesson03.unit.testing.tools.data.provider;
 
-import org.testng.annotations.DataProvider;
 import java.math.BigDecimal;
+import org.testng.annotations.DataProvider;
+
 
 public class ExternalDataProvider {
 

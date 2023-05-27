@@ -2,9 +2,10 @@ package ru.levelup.at.lesson03.unit.testing.tools.sample;
 
 import static org.testng.Assert.assertEquals;
 
+import java.math.BigDecimal;
 import org.testng.annotations.Test;
 import ru.levelup.at.lesson03.unit.testing.tools.CalculatorImpl;
-import java.math.BigDecimal;
+
 
 public class CalculatorSampleTest {
 

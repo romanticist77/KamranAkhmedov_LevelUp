@@ -1,13 +1,15 @@
 package ru.levelup.at.lesson03.unit.testing.tools.hooks.method;
 
+import static org.testng.Assert.assertEquals;
+
+import java.math.BigDecimal;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.levelup.at.lesson03.unit.testing.tools.Calculator;
 import ru.levelup.at.lesson03.unit.testing.tools.CalculatorImpl;
-import java.math.BigDecimal;
 
-import static org.testng.Assert.assertEquals;
+
 
 public class CalculatorBeforeAfterMethodSampleTest {
 

@@ -1,9 +1,9 @@
 package ru.levelup.at.lesson03.unit.testing.tools.hooks.tests;
 
-import org.testng.annotations.Test;
-import java.math.BigDecimal;
-
 import static org.testng.Assert.assertEquals;
+
+import java.math.BigDecimal;
+import org.testng.annotations.Test;
 
 public class CalculatorSubtractSampleTest extends BaseCalculatorTest {
 

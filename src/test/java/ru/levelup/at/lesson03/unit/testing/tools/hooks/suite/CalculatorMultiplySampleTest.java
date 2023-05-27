@@ -1,10 +1,10 @@
 package ru.levelup.at.lesson03.unit.testing.tools.hooks.suite;
 
+import static org.testng.Assert.assertEquals;
+
+import java.math.BigDecimal;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import java.math.BigDecimal;
-
-import static org.testng.Assert.assertEquals;
 
 public class CalculatorMultiplySampleTest extends BaseCalculatorTest {
 
