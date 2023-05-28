@@ -19,4 +19,11 @@ public class CalculatorDivideSampleTest extends BaseCalculatorTest {
         assertEquals(actual, expected, "Calculator divide function error");
     }
 
+    @Test
+    public void divideToZero() {
+        System.out.println(this.getClass().getName() + " divideToZero");
+        //when
+        var actual = calculator.divide(new BigDecimal("4.0"), new BigDecimal("0.0"));
+    }
+
 }
