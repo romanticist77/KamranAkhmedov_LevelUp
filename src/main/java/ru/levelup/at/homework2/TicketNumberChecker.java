@@ -1,14 +1,12 @@
 package ru.levelup.at.homework2;
 
-import java.util.Arrays;
-
-public class TickerNumberChecker {
+public class TicketNumberChecker {
 
     public boolean checkTicketNumber(String ticketNumber) {
         return countFirstPart(ticketNumber) == countSecondPart(ticketNumber);
     }
 
-    public int countFirstPart(String ticketNumber) {
+    private int countFirstPart(String ticketNumber) {
         String firstPart = ticketNumber.substring(0, 3);
         System.out.println(firstPart);
         char[] arrayNumber = firstPart.toCharArray();
@@ -20,7 +18,7 @@ public class TickerNumberChecker {
         return result;
     }
 
-    public int countSecondPart(String ticketNumber) {
+    private int countSecondPart(String ticketNumber) {
         String secondPart = ticketNumber.substring(3);
         System.out.println(secondPart);
         char[] arrayNumber = secondPart.toCharArray();
