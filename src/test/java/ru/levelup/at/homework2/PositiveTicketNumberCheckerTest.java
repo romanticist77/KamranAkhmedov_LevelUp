@@ -1,9 +1,9 @@
 package ru.levelup.at.homework2;
 
+import static org.testng.Assert.assertEquals;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertEquals;
 
 public class PositiveTicketNumberCheckerTest extends BasicTicketNumberCheckerTest {
 
