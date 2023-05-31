@@ -14,35 +14,59 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <checkstyle.version>10.3.3</checkstyle.version>
         <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
+        <commons-io.version>2.12.0</commons-io.version>
         <testng.version>7.8.0</testng.version>
         <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>3.1.0</maven-failsafe-plugin.version>
     </properties>
 
     <profiles>
+<!--        <profile>-->
+<!--            <id>-->
+<!--                lesson-0304-calculator-group-positive-suite-->
+<!--            </id>-->
+<!--            <properties>-->
+<!--                <suite.xml>-->
+<!--                    ${project.build.directory}/test-classes/ru/levelup/at/lesson03/unit/testing/tools/hooks/group/CalculatorPositiveGroupSuite.xml-->
+<!--                </suite.xml>-->
+<!--            </properties>-->
+<!--        </profile>-->
         <profile>
-            <id>homework3-negative-test</id>
+            <id>
+                lesson-0304-calculator-tests-suite
+            </id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/NegativeTestSuite.xml</suite.xml>
+                <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/lesson03/unit/testing/tools/hooks/suite/CalculatorIncrementSuite.xml
+                </suite.xml>
             </properties>
         </profile>
         <profile>
-            <id>homework3-positive-test</id>
+            <id>
+                lesson-0304-calculator-suite-suite
+            </id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
-                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/PositiveTestSuite.xml</suite.xml>
-            </properties>
-        </profile>
-        <profile>
-            <id>homework3-complete-test</id>
-            <properties>
-                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/CompleteTestSuite.xml</suite.xml>
+                <it.suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/lesson03/unit/testing/tools/hooks/suite/CalculatorDecrementSuite.xml
+                </it.suite.xml>
             </properties>
         </profile>
     </profiles>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -90,11 +114,54 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+<!--                    <suiteXmlFiles>-->
+<!--                        &lt;!&ndash; всегда один сьют тестов &ndash;&gt;-->
+<!--                        <suiteXmlFile>-->
+<!--                            ${project.build.directory}/test-classes/ru/levelup/at/lesson03/unit/testing/tools/hooks/group/CalculatorPositiveGroupSuite.xml-->
+<!--                        </suiteXmlFile>-->
+<!--                    </suiteXmlFiles>-->
                     <suiteXmlFiles>
                         <!--suppress UnresolvedMavenProperty -->
-                        <suiteXmlFile>${suite.xml}</suiteXmlFile>
+                        <suiteXmlFile>
+                            ${suite.xml}
+                        </suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+                <configuration>
+                    <!-- всегда один сьют тестов -->
+                    <!--                    <suiteXmlFiles>-->
+                    <!--                        <suiteXmlFile>-->
+                    <!--                            ${project.build.directory}/test-classes/ru/levelup/at/lesson03/unit/testing/tools/hooks/group/CalculatorPositiveGroupSuite.xml-->
+                    <!--                        </suiteXmlFile>-->
+                    <!--                    </suiteXmlFiles>-->
+                    <suiteXmlFiles>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <suiteXmlFile>
+                            ${it.suite.xml}
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-verify</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

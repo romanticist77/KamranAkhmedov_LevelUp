@@ -1,8 +1,0 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Positive test suite">
-    <test name="Positive tests">
-        <classes>
-            <class name="ru.levelup.at.homework2.PositiveTicketNumberCheckerTest"/>
-        </classes>
-    </test>
-</suite>

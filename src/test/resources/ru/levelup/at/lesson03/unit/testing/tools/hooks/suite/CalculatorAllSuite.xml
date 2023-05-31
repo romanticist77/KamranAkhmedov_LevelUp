@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Calculator All Suite">
+    <test name="Calculator All Test">
+        <classes>
+            <class name="ru.levelup.at.lesson03.unit.testing.tools.hooks.suite.CalculatorAddSampleTest"/>
+            <class name="ru.levelup.at.lesson03.unit.testing.tools.hooks.suite.CalculatorMultiplySampleTest"/>
+            <class name="ru.levelup.at.lesson03.unit.testing.tools.hooks.suite.CalculatorDivideSampleTest"/>
+            <class name="ru.levelup.at.lesson03.unit.testing.tools.hooks.suite.CalculatorSubtractSampleTest"/>
+        </classes>
+    </test>
+</suite>
