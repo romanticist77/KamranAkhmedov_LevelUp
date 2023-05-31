@@ -40,7 +40,7 @@
             </activation>
             <properties>
                 <suite.xml>
-                    ${project.build.directory}/test-classes/ru/levelup/at/lesson03/unit/testing/tools/hooks/tests/CalculatorAllSuite.xml
+                    ${project.build.directory}/test-classes/ru/levelup/at/lesson03/unit/testing/tools/hooks/suite/CalculatorIncrementSuite.xml
                 </suite.xml>
             </properties>
         </profile>
