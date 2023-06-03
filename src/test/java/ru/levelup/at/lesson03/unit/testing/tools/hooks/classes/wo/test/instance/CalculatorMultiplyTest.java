@@ -15,7 +15,6 @@ public class CalculatorMultiplyTest extends CalculatorBasicTest {
         System.out.println("Method has been overridden");
     }
 
-
     @Test
     void calculatorMultiplyTest() {
         System.out.println(this.getClass().getName() + " calculatorMultiplyTest");
@@ -23,5 +22,4 @@ public class CalculatorMultiplyTest extends CalculatorBasicTest {
         var expected = new BigDecimal("4.00");
         assertEquals(expected, actual, "Умножение работает неверно");
     }
-
 }

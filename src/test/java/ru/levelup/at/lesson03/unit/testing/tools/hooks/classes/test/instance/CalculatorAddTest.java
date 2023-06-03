@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson03.unit.testing.tools.hooks.classes.wo.test.instance;
+package ru.levelup.at.lesson03.unit.testing.tools.hooks.classes.test.instance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

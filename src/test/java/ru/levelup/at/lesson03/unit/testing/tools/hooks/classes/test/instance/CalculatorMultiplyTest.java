@@ -1,21 +1,21 @@
-package ru.levelup.at.lesson03.unit.testing.tools.hooks.method.inheritance;
+package ru.levelup.at.lesson03.unit.testing.tools.hooks.classes.test.instance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.levelup.at.lesson03.unit.testing.tools.Calculator;
-import ru.levelup.at.lesson03.unit.testing.tools.CalculatorImpl;
 
-public class CalculatorMultiplyTest extends CalculatorBasicTest {
+public class CalculatorMultiplyTest extends
+    CalculatorBasicTest {
 
     @Override
-    @BeforeEach
-    void setUp() {
-        super.setUp();
-        System.out.println("Method has been overridden");
+    @BeforeAll
+    void beforeAll() {
+        super.beforeAll();
+        System.out.println("beforeAll Method has been overridden");
     }
 
     @Test
@@ -24,5 +24,12 @@ public class CalculatorMultiplyTest extends CalculatorBasicTest {
         var actual = calculator.multiply(new BigDecimal("2.0"), new BigDecimal("2.0"));
         var expected = new BigDecimal("4.00");
         assertEquals(expected, actual, "Умножение работает неверно");
+    }
+
+    @Override
+    @AfterAll
+    void afterAll() {
+        super.afterAll();
+        System.out.println("afterAll Method has been overridden");
     }
 }

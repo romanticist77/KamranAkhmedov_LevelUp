@@ -18,5 +18,4 @@ public class CalculatorAddTest extends CalculatorBasicTest {
         var expected = new BigDecimal("4.0");
         assertEquals(expected, actual, "Сложение работает неверно");
     }
-
 }

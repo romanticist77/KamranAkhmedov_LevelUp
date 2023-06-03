@@ -1,13 +1,11 @@
 package ru.levelup.at.lesson03.unit.testing.tools.sample;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Assertions;
+import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import ru.levelup.at.lesson03.unit.testing.tools.Calculator;
 import ru.levelup.at.lesson03.unit.testing.tools.CalculatorImpl;
-import java.math.BigDecimal;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorSampleTest {
 
@@ -29,6 +27,5 @@ public class CalculatorSampleTest {
         var actual = calculator.multiply(new BigDecimal("2.0"), new BigDecimal("2.0"));
         var expected = new BigDecimal("4.00");
         assertEquals(expected, actual, "Умножение работает неверно");
-
     }
 }

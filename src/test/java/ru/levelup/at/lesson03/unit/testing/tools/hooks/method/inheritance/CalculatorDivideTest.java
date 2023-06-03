@@ -1,13 +1,11 @@
 package ru.levelup.at.lesson03.unit.testing.tools.hooks.method.inheritance;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import java.math.BigDecimal;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CalculatorDivideTest extends CalculatorBasicTest {
+import java.math.BigDecimal;
+import org.junit.jupiter.api.Test;
 
+public class CalculatorDivideTest extends CalculatorBasicTest {
 
     @Test
     void calculatorDivideTest() {
@@ -16,5 +14,4 @@ public class CalculatorDivideTest extends CalculatorBasicTest {
         var expected = new BigDecimal("2");
         assertEquals(expected, actual, "Деление работает неверно");
     }
-
 }

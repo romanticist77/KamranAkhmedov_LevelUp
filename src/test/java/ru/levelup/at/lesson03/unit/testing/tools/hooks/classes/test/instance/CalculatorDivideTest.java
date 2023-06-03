@@ -1,11 +1,12 @@
-package ru.levelup.at.lesson03.unit.testing.tools.hooks.classes.wo.test.instance;
+package ru.levelup.at.lesson03.unit.testing.tools.hooks.classes.test.instance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 
-public class CalculatorDivideTest extends CalculatorBasicTest {
+public class CalculatorDivideTest extends
+    CalculatorBasicTest {
 
     @Test
     void calculatorDivideTest() {

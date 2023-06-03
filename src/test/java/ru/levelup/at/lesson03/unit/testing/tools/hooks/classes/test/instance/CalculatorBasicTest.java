@@ -1,19 +1,22 @@
-package ru.levelup.at.lesson03.unit.testing.tools.hooks.classes.wo.test.instance;
+package ru.levelup.at.lesson03.unit.testing.tools.hooks.classes.test.instance;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import ru.levelup.at.lesson03.unit.testing.tools.Calculator;
 import ru.levelup.at.lesson03.unit.testing.tools.CalculatorImpl;
 
+@TestInstance(Lifecycle.PER_CLASS)
 abstract class CalculatorBasicTest {
 
     protected Calculator calculator;
 
     @BeforeAll
-    static void beforeAll() {
-        System.out.println(CalculatorBasicTest.class.getName() + " Before all");
+    void beforeAll() {
+        System.out.println(this.getClass().getName() + " Before all");
     }
 
     @BeforeEach
@@ -29,7 +32,7 @@ abstract class CalculatorBasicTest {
     }
 
     @AfterAll
-    static void afterAll() {
+    void afterAll() {
         System.out.println(CalculatorBasicTest.class.getName() + " After all");
     }
 }
