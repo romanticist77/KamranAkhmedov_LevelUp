@@ -1,12 +1,9 @@
 package ru.levelup.at.lesson03.unit.testing.tools.soft.assertions;
 
+import java.time.LocalDate;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import ru.levelup.at.lesson03.unit.testing.tools.soft.assertions.service.PersonService;
-
-import java.time.LocalDate;
-
-import static org.testng.AssertJUnit.assertEquals;
 
 public class SoftAssertionsTest {
 

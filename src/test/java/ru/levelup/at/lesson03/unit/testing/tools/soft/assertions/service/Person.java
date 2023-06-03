@@ -35,10 +35,12 @@ public class Person {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (o == null || getClass() != o.getClass())
+        }
+        if (o == null || getClass() != o.getClass()) {
             return false;
+        }
         Person person = (Person) o;
         return Objects.equals(firstname, person.firstname) && Objects.equals(lastName, person.lastName)
             && Objects.equals(dateOfBirth, person.dateOfBirth) && Objects.equals(email, person.email);
@@ -51,11 +53,17 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-            "firstname='" + firstname + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", dateOfBirth=" + dateOfBirth +
-            ", email='" + email + '\'' +
+        return "Person{"
+            + "firstname='"
+            + firstname + '\''
+            + ", lastName='"
+            + lastName + '\''
+            + ", dateOfBirth="
+            + dateOfBirth
+            + ", email='"
+            + email
+            + '\''
+            +
             '}';
     }
 }
