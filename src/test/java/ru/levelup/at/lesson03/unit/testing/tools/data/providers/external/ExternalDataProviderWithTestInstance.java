@@ -1,13 +1,10 @@
 package ru.levelup.at.lesson03.unit.testing.tools.data.providers.external;
 
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
-import org.junit.jupiter.params.provider.Arguments;
+import static org.junit.jupiter.params.provider.Arguments.of;
 
 import java.math.BigDecimal;
 import java.util.stream.Stream;
-
-import static org.junit.jupiter.params.provider.Arguments.of;
+import org.junit.jupiter.params.provider.Arguments;
 
 public class ExternalDataProviderWithTestInstance {
 

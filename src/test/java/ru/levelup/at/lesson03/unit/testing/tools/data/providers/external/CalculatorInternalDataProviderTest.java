@@ -24,7 +24,8 @@ public class CalculatorInternalDataProviderTest {
     }
 
     @ParameterizedTest
-    @MethodSource("ru.levelup.at.lesson03.unit.testing.tools.data.providers.external.ExternalDataProvider#addDataProvider")
+    @MethodSource("ru.levelup.at.lesson03.unit.testing.tools.data.providers.external."
+        + "ExternalDataProvider#addDataProvider")
     void calculatorSampleTest(BigDecimal a, BigDecimal b, BigDecimal expected) {
         System.out.println(this.getClass().getName() + " calculatorSampleTest");
         var actual = calculator.add(a, b);
@@ -32,7 +33,8 @@ public class CalculatorInternalDataProviderTest {
     }
 
     @ParameterizedTest
-    @MethodSource("ru.levelup.at.lesson03.unit.testing.tools.data.providers.external.ExternalDataProvider#multiplyDataProvider")
+    @MethodSource("ru.levelup.at.lesson03.unit.testing.tools.data.providers.external."
+        + "ExternalDataProvider#multiplyDataProvider")
     void calculatorMultiplyTest(BigDecimal a, BigDecimal b, BigDecimal expected) {
         System.out.println(this.getClass().getName() + " calculatorMultiplyTest");
         var actual = calculator.multiply(a, b);

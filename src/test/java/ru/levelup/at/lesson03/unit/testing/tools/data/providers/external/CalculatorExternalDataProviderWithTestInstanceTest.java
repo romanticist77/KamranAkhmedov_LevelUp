@@ -1,5 +1,8 @@
 package ru.levelup.at.lesson03.unit.testing.tools.data.providers.external;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.math.BigDecimal;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
@@ -9,12 +12,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import ru.levelup.at.lesson03.unit.testing.tools.Calculator;
 import ru.levelup.at.lesson03.unit.testing.tools.CalculatorImpl;
-
-import java.math.BigDecimal;
-import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.params.provider.Arguments.of;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class CalculatorExternalDataProviderWithTestInstanceTest {
@@ -28,7 +25,9 @@ public class CalculatorExternalDataProviderWithTestInstanceTest {
     }
 
     @ParameterizedTest
-    @MethodSource("ru.levelup.at.lesson03.unit.testing.tools.data.providers.external.ExternalDataProviderWithTestInstance#addDataProvider")
+    @MethodSource(
+        "ru.levelup.at.lesson03.unit.testing.tools.data.providers.external."
+            + "ExternalDataProviderWithTestInstance#addDataProvider")
     void calculatorSampleTest(BigDecimal a, BigDecimal b, BigDecimal expected) {
         System.out.println(this.getClass().getName() + " calculatorSampleTest");
         var actual = calculator.add(a, b);
@@ -36,7 +35,9 @@ public class CalculatorExternalDataProviderWithTestInstanceTest {
     }
 
     @ParameterizedTest
-    @MethodSource("ru.levelup.at.lesson03.unit.testing.tools.data.providers.external.ExternalDataProviderWithTestInstance#multiplyDataProvider")
+    @MethodSource(
+        "ru.levelup.at.lesson03.unit.testing.tools.data.providers.external."
+            + "ExternalDataProviderWithTestInstance#multiplyDataProvider")
     void calculatorMultiplyTest(BigDecimal a, BigDecimal b, BigDecimal expected) {
         System.out.println(this.getClass().getName() + " calculatorMultiplyTest");
         var actual = calculator.multiply(a, b);
