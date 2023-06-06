@@ -17,6 +17,7 @@
         <testng.version>7.8.0</testng.version>
         <selenium-java.version>4.9.1</selenium-java.version>
         <assertj-core.version>3.24.2</assertj-core.version>
+        <slf4j-log4j12.version>2.0.7</slf4j-log4j12.version>
     </properties>
 
     <dependencies>
@@ -46,7 +47,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>2.0.7</version>
+            <version>${slf4j-log4j12.version}</version>
             <type>pom</type>
             <scope>test</scope>
         </dependency>
