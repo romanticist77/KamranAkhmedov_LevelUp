@@ -21,15 +21,6 @@ public class NegativeTicketNumberCheckerTest extends BasicTicketNumberCheckerTes
         };
     }
 
-//    @DataProvider(name = "Empty String data")
-//    public static Object[][] checkerEmptyDataProvider() {
-//        return new Object[][] {
-//            {"123456", false},
-//            {"456123", false},
-//            {"      ", false}
-//        };
-//    }
-
     @Test(dataProvider = "Negative test data")
     public void checkerNegativeTest(String ticketNumber) {
         var expectedMessage = "Illegal argument is provided";
@@ -39,13 +30,4 @@ public class NegativeTicketNumberCheckerTest extends BasicTicketNumberCheckerTes
             Assert.assertEquals(expectedMessage, e.getMessage());
         }
     }
-
-//    @Test
-//    public void checkerEmptyStringTest() {
-//        try {
-//            assertFalse(tickerNumberChecker.checkTicketNumber("      "));
-//        } catch (Exception e) {
-//            Assert.assertEquals(expected, e.getMessage());
-//        }
-//    }
 }
