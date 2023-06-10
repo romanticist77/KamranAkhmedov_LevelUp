@@ -14,7 +14,9 @@ public class NegativeTicketNumberCheckerTest extends BasicTicketNumberCheckerTes
         return new Object[][] {
             {"123456"},
             {"456123"},
+            {"123"},
             {"      "},
+            {""},
             {null}
         };
     }
