@@ -3,7 +3,14 @@ package ru.levelup.at.homework2;
 public class TicketNumberChecker {
 
     public boolean checkTicketNumber(String ticketNumber) {
-        return countFirstPart(ticketNumber) == countSecondPart(ticketNumber);
+        if (ticketNumber == null) {
+            throw new NullPointerException("Illegal argument is provided");
+        }
+        if (ticketNumber.isEmpty() || ticketNumber.isBlank()) {
+            throw new IllegalArgumentException("Illegal argument is provided");
+        } else {
+            return countFirstPart(ticketNumber) == countSecondPart(ticketNumber);
+        }
     }
 
     private int countFirstPart(String ticketNumber) {
