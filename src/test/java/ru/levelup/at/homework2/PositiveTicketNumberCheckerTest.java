@@ -11,7 +11,9 @@ public class PositiveTicketNumberCheckerTest extends BasicTicketNumberCheckerTes
     public static Object[][] subtractDataProvider() {
         return new Object[][] {
             {"123123", true},
-            {"456456", true}
+            {"456456", true},
+            {"123456", false},
+            {"456123", false}
         };
     }
 

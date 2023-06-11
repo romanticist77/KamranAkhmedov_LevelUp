@@ -6,7 +6,7 @@ public class TicketNumberChecker {
         if (ticketNumber == null) {
             throw new IllegalArgumentException("Illegal argument is provided");
         }
-        if (ticketNumber.isEmpty() || ticketNumber.isBlank()) {
+        if (ticketNumber.isEmpty() || ticketNumber.isBlank() || ticketNumber.length() < 6) {
             throw new IllegalArgumentException("Illegal argument is provided");
         } else {
             return countFirstPart(ticketNumber) == countSecondPart(ticketNumber);
