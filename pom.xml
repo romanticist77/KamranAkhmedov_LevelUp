@@ -18,6 +18,7 @@
         <selenium-java.version>4.9.1</selenium-java.version>
         <assertj-core.version>3.24.2</assertj-core.version>
         <slf4j-log4j12.version>2.0.7</slf4j-log4j12.version>
+        <javafaker.version>1.0.2</javafaker.version>
     </properties>
 
     <dependencies>
@@ -50,6 +51,11 @@
             <version>${slf4j-log4j12.version}</version>
             <type>pom</type>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson0507.selenium.page.objects.types.fluent;
+package ru.levelup.at.lesson0507.selenium.page.objects.types.voids;
 
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
@@ -33,34 +33,24 @@ public class UserBugRedLoginRegistrationPage {
         PageFactory.initElements(driver, this);
     }
 
-    public UserBugRedLoginRegistrationPage open() {
+    public void open() {
         driver.navigate().to(USER_BUG_RED_URL);
-        return this;
     }
 
-    public UserBugRedLoginRegistrationPage fillLoginField(final String login) {
+    public void fillLoginField(final String login) {
         wait.until(ExpectedConditions.visibilityOf(loginField)).sendKeys(login);
-        return this;
     }
 
-    public UserBugRedLoginRegistrationPage fillPasswordField(final String password) {
+    public void fillPasswordField(final String password) {
         wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(password);
-        return this;
     }
 
-    public UserBugRedLoginRegistrationPage fillEmailField(final String email) {
+    public void fillEmailField(final String email) {
         wait.until(ExpectedConditions.visibilityOf(emailField)).sendKeys(email);
-        return this;
     }
 
-    public UserBugRedMainPage successClickRegisterButton() {
+    public void clickRegisterButton() {
         wait.until(ExpectedConditions.elementToBeClickable(registerButton)).click();
-        return new UserBugRedMainPage(driver);
-    }
-
-    public UserBugRedLoginRegistrationPage failClickRegisterButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(registerButton)).click();
-        return this;
     }
 
     public String getErrorMessageLabelText() {

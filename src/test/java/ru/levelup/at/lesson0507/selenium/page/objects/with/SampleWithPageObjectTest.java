@@ -1,11 +1,13 @@
-package ru.levelup.at.lesson0507.selenium.page.objects.types.voids;
+package ru.levelup.at.lesson0507.selenium.page.objects.with;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.testng.annotations.Test;
 import ru.levelup.at.lesson0507.selenium.BaseSeleniumTest;
+import ru.levelup.at.lesson0507.selenium.page.objects.types.voids.UserBugRedLoginRegistrationPage;
+import ru.levelup.at.lesson0507.selenium.page.objects.types.voids.UserBugRedMainPage;
 
-public class PageObjectVoidTest extends BaseSeleniumTest {
+public class SampleWithPageObjectTest extends BaseSeleniumTest {
 
     @Test
     public void registerUserTest() {

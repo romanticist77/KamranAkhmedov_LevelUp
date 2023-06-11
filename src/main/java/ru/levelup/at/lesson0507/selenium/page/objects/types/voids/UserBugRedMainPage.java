@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson0507.selenium.page.objects.types.fluent;
+package ru.levelup.at.lesson0507.selenium.page.objects.types.voids;
 
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
