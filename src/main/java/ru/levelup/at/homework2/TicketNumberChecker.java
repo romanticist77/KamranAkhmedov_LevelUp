@@ -4,7 +4,7 @@ public class TicketNumberChecker {
 
     public boolean checkTicketNumber(String ticketNumber) {
         if (ticketNumber == null) {
-            throw new NullPointerException("Illegal argument is provided");
+            throw new IllegalArgumentException("Illegal argument is provided");
         }
         if (ticketNumber.isEmpty() || ticketNumber.isBlank()) {
             throw new IllegalArgumentException("Illegal argument is provided");
