@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.testng.annotations.Test;
 import ru.levelup.at.lesson0507.selenium.BaseSeleniumTest;
-import ru.levelup.at.lesson0507.selenium.page.objects.types.voids.UserBugRedLoginRegistrationPage;
-import ru.levelup.at.lesson0507.selenium.page.objects.types.voids.UserBugRedMainPage;
+import ru.levelup.at.lesson0507.selenium.page.objects.inheritance.UserBugRedLoginRegistrationPage;
+import ru.levelup.at.lesson0507.selenium.page.objects.inheritance.UserBugRedMainPage;
 
 public class SampleWithPageObjectTest extends BaseSeleniumTest {
 

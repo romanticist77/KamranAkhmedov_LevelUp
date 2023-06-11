@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson0507.selenium.page.objects.types.voids;
+package ru.levelup.at.lesson0507.selenium.page.objects.inheritance;
 
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
@@ -8,12 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class UserBugRedLoginRegistrationPage {
+import static ru.levelup.at.lesson0507.selenium.page.objects.inheritance.UserBugRedBasePage.USER_BUG_RED_URL;
 
-    protected static final String USER_BUG_RED_URL = "http://users.bugred.ru/user/login/index.html";
-
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class UserBugRedLoginRegistrationPage extends UserBugRedBasePage {
 
     @FindBy(xpath = "//form[contains(@action, 'register')]//input[@name='name']")
     private WebElement loginField;
@@ -27,14 +24,14 @@ public class UserBugRedLoginRegistrationPage {
     private WebElement errorMessageLabel;
 
     public UserBugRedLoginRegistrationPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
+    public static final String PAGE_URL = "/user/login/index.html";
+
+    @Override
     public void open() {
-        driver.navigate().to(USER_BUG_RED_URL);
+        open(PAGE_URL);
     }
 
     public void fillLoginField(final String login) {

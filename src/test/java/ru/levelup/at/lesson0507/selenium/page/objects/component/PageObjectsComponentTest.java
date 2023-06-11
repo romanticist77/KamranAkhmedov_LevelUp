@@ -1,13 +1,11 @@
-package ru.levelup.at.lesson0507.selenium.page.objects.types.voids;
-
-import static org.assertj.core.api.Assertions.assertThat;
+package ru.levelup.at.lesson0507.selenium.page.objects.component;
 
 import org.testng.annotations.Test;
 import ru.levelup.at.lesson0507.selenium.BaseSeleniumTest;
-import ru.levelup.at.lesson0507.selenium.page.objects.inheritance.UserBugRedLoginRegistrationPage;
-import ru.levelup.at.lesson0507.selenium.page.objects.inheritance.UserBugRedMainPage;
 
-public class PageObjectVoidTest extends BaseSeleniumTest {
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class PageObjectsComponentTest extends BaseSeleniumTest {
 
     @Test
     public void registerUserTest() {
@@ -19,10 +17,11 @@ public class PageObjectVoidTest extends BaseSeleniumTest {
         var registrationPage = new UserBugRedLoginRegistrationPage(driver);
 
         registrationPage.open();
-        registrationPage.fillLoginField(login);
-        registrationPage.fillPasswordField(password);
-        registrationPage.fillEmailField(email);
-        registrationPage.clickRegisterButton();
+        registrationPage.registration().fillLoginField(login);
+        registrationPage.registration().fillPasswordField(password);
+        registrationPage.registration().fillEmailField(email);
+        registrationPage.registration().clickRegisterButton();
+        registrationPage.menu().menuClick("Компании");
 
         var mainPage = new UserBugRedMainPage(driver);
         String actualUserName = mainPage.getUserNameText();
@@ -39,12 +38,12 @@ public class PageObjectVoidTest extends BaseSeleniumTest {
         var registrationPage = new UserBugRedLoginRegistrationPage(driver);
 
         registrationPage.open();
-        registrationPage.fillLoginField(login);
-        registrationPage.fillPasswordField(password);
-        registrationPage.fillEmailField(email);
-        registrationPage.clickRegisterButton();
+        registrationPage.registration().fillLoginField(login);
+        registrationPage.registration().fillPasswordField(password);
+        registrationPage.registration().fillEmailField(email);
+        registrationPage.registration().clickRegisterButton();
 
-        String actualUserName = registrationPage.getErrorMessageLabelText();
+        String actualUserName = registrationPage.registration().getErrorMessageLabelText();
         assertThat(actualUserName).isEqualToIgnoringCase("register_not_correct_field (email)");
     }
 }

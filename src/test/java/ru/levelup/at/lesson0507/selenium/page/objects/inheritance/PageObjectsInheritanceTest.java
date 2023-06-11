@@ -1,13 +1,13 @@
-package ru.levelup.at.lesson0507.selenium.page.objects.types.voids;
+package ru.levelup.at.lesson0507.selenium.page.objects.inheritance;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 import ru.levelup.at.lesson0507.selenium.BaseSeleniumTest;
-import ru.levelup.at.lesson0507.selenium.page.objects.inheritance.UserBugRedLoginRegistrationPage;
-import ru.levelup.at.lesson0507.selenium.page.objects.inheritance.UserBugRedMainPage;
 
-public class PageObjectVoidTest extends BaseSeleniumTest {
+public class PageObjectsInheritanceTest extends BaseSeleniumTest {
 
     @Test
     public void registerUserTest() {
