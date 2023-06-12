@@ -1,9 +1,6 @@
 package ru.levelup.at.lesson0507.selenium.page.objects.component;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.levelup.at.lesson0507.selenium.page.objects.component.elements.LoginComponent;
 import ru.levelup.at.lesson0507.selenium.page.objects.component.elements.RegistrationComponent;
 

@@ -22,5 +22,4 @@ public class UserBugRedMainPage extends UserBugRedBasePage {
     public String getUserNameText() {
         return wait.until(ExpectedConditions.visibilityOf(userDropdown)).getText();
     }
-
 }
