@@ -42,6 +42,7 @@ public class IncomingToTrashBinTest {
         driver.quit();
     }
 
+    @SuppressWarnings("checkstyle:VariableDeclarationUsageDistance")
     @Test
     public void successfulRoutingTest() {
         var signInButton = wait.until(
@@ -95,10 +96,6 @@ public class IncomingToTrashBinTest {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='layer__controls']/span")));
         closeModalWindowButton.click();
 
-        //        incomingMessagesButton =
-        //            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Входящие']")));
-        //        incomingMessagesButton.click();
-
         var toYourSelf = wait.until(ExpectedConditions.visibilityOfElementLocated(
             By.xpath("//span[text()='Письма себе']")));
         toYourSelf.click();
@@ -109,13 +106,6 @@ public class IncomingToTrashBinTest {
 
         System.out.println("Incoming. Target subject is found: " + verifySubject);
 
-        //        var testFolder = wait.until(
-        //            ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()= 'Тест']/parent::div/parent::div")));
-        //        testFolder.click();
-        //
-        //        verifySubject = wait.until(ExpectedConditions.visibilityOfElementLocated(
-        //            By.xpath("//span[text()='%s']".formatted(uuidAsString))));
-        //        verifySubject.click();
         var verifyRecipient = wait.until(ExpectedConditions.visibilityOfElementLocated(
             By.xpath("//span[contains(@title,'test94.00@mail.ru')]")));
         var verifyBody = wait.until(ExpectedConditions.visibilityOfElementLocated(

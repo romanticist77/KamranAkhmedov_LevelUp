@@ -7,25 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class FramePage extends MailBasePage {
 
-    //        var framePage = wait.until((ExpectedConditions.visibilityOfElementLocated(
-    //            By.xpath("//iframe[@class='ag-popup__frame__layout__iframe']"))));
-    //        var frame = wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(framePage));
-    //
-    //        var username = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='username']")));
-    //        username.sendKeys("test94.00@mail.ru");
-    //
-    //        var enterPasswordButton = wait.until(
-    //            ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@data-test-id='next-button']")));
-    //        enterPasswordButton.click();
-    //
-    //        var password =
-    //            wait.until((ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='password']"))));
-    //        password.sendKeys("S{Txf7X8-U$SgiJ");
-    //
-    //        var signInButton = wait.until(
-    //            ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@data-test-id='submit-button']")));
-    //        signInButton.click();
-
     @FindBy(xpath = "//iframe[@class='ag-popup__frame__layout__iframe']")
     private WebElement frameModalWindow;
     @FindBy(xpath = "//input[@name='username']")

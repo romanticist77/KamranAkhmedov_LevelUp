@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 
 public class CustomRulesTest extends SeleniumBaseTest {
 
+    @SuppressWarnings("checkstyle:VariableDeclarationUsageDistance")
     @Test
     public void successfulRoutingTest() {
 
