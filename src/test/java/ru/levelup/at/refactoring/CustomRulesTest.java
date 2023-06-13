@@ -41,12 +41,11 @@ public class CustomRulesTest extends SeleniumBaseTest {
         inboxPage.clickSendButton();
         inboxPage.clickCloseModalWindowButton();
         inboxPage.clickSentMessagesButton();
-
         var verifySubject = inboxPage.verifySelfTestSubjectFound();
+
         System.out.println("Sent. Target subject is found: " + verifySubject);
 
         inboxPage.clickTestMessagesButton();
-
         verifySubject = inboxPage.verifyTestSubjectFound();
         verifySubject.click();
         var verifyRecipient = inboxPage.verifyRecipientFound();
