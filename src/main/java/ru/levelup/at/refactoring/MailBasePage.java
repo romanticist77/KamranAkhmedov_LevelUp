@@ -1,27 +1,25 @@
-package ru.levelup.at.homework3;
+package ru.levelup.at.refactoring;
 
-import com.github.javafaker.Faker;
 import java.time.Duration;
 import java.util.UUID;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 
-public abstract class MailBaseTest {
+public abstract class MailBasePage {
 
     protected static final String MAIL_RU = "https://mail.ru";
 
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected UUID uuid;
+    protected final String uuidAsString;
 
-    public MailBaseTest(WebDriver driver) {
+    public MailBasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        uuid = UUID.randomUUID();
+        uuidAsString = uuid.toString();
         PageFactory.initElements(driver, this);
     }
 

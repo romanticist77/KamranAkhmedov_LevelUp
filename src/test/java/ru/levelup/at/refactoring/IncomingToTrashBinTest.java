@@ -1,16 +1,49 @@
-package ru.levelup.at.homework3;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.Test;
+package ru.levelup.at.refactoring;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class IncomingToTrashBinSeleniumTest extends BaseSeleniumTest {
+import java.time.Duration;
+import java.util.UUID;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class IncomingToTrashBinTest {
+
+    public static final String MAIL_RU = "https://mail.ru/";
+
+    private WebDriver driver;
+    private WebDriverWait wait;
+
+    private UUID uuid;
+    String uuidAsString;
+
+    @BeforeMethod
+    public void setUp() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("start-maximized");
+        driver = new ChromeDriver(chromeOptions);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.navigate().to(MAIL_RU);
+
+        uuid = UUID.randomUUID();
+        uuidAsString = uuid.toString();
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
 
     @Test
     public void successfulRoutingTest() {
-        driver.navigate().to(MAIL_RU);
         var signInButton = wait.until(
             ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@class, 'ph-login')]")));
         signInButton.click();
@@ -77,8 +110,7 @@ public class IncomingToTrashBinSeleniumTest extends BaseSeleniumTest {
         System.out.println("Incoming. Target subject is found: " + verifySubject);
 
         //        var testFolder = wait.until(
-        //            ExpectedConditions.visibilityOfElementLocated(By
-        //            .xpath("//div[text()= 'Тест']/parent::div/parent::div")));
+        //            ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()= 'Тест']/parent::div/parent::div")));
         //        testFolder.click();
         //
         //        verifySubject = wait.until(ExpectedConditions.visibilityOfElementLocated(
