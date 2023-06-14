@@ -13,10 +13,8 @@ import org.testng.annotations.BeforeMethod;
 public class SeleniumBaseTest {
 
     protected static final String MAIL_RU = "https://mail.ru";
-
     protected WebDriver driver;
     protected WebDriverWait wait;
-
     protected UUID uuid;
     protected String uuidAsString;
     protected Faker faker;

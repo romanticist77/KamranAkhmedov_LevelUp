@@ -39,10 +39,31 @@ public class InboxPage extends MailBasePage {
     @FindBy(xpath = "//div[text()='Выйти']")
     private WebElement exitButton;
     @FindBy(xpath = "//div[text()= 'Тест']/parent::div/parent::div")
-    private WebElement testFolder;
+    private WebElement testButton;
+    @FindBy(xpath = "//span[text()='Письма себе']")
+    private WebElement toYourselfButton;
+    @FindBy(xpath = "//div[text()='Удалить']/parent::span")
+    private WebElement removeButton;
+    @FindBy(xpath = "//div[text()='Корзина']")
+    private WebElement trashBinButton;
+
+    public void clickTrashBinButton() {
+        wait.until(ExpectedConditions.visibilityOf(
+            trashBinButton)).click();
+    }
+
+    public void clickRemoveButton() {
+        wait.until(ExpectedConditions.visibilityOf(
+            removeButton)).click();
+    }
+
+    public void clickToYourselfButton() {
+        wait.until(ExpectedConditions.visibilityOf(
+            toYourselfButton)).click();
+    }
 
     public void clickTestMessagesButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(testFolder)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(testButton)).click();
     }
 
     public WebElement getIncomingMessagesButton() {
@@ -79,7 +100,7 @@ public class InboxPage extends MailBasePage {
 
     public WebElement verifySubjectFound() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//span[contains(text(),'%s')]".formatted(uuidAsString))));
+            By.xpath("//span[text()='%s']".formatted(uuidAsString))));
     }
 
     public boolean verifySubjectNotFound() {
@@ -112,7 +133,7 @@ public class InboxPage extends MailBasePage {
 
     public void clickOnSubject() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//span[contains(text(),'%s')]".formatted(uuidAsString)))).click();
+            By.xpath("//span[text()='%s']".formatted(uuidAsString)))).click();
     }
 
     public void clickSendButton() {

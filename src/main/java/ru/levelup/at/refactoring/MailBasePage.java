@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class MailBasePage {
 
     protected static final String MAIL_RU = "https://mail.ru";
-
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected UUID uuid;
