@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 public class IncomingToTrashBinTest extends SeleniumBaseTest {
 
+    @SuppressWarnings("checkstyle:VariableDeclarationUsageDistance")
     @Test
     public void successfulRoutingTest() {
 
