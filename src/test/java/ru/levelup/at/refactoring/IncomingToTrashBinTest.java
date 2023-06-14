@@ -3,12 +3,12 @@ package ru.levelup.at.refactoring;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.testng.annotations.Test;
+import java.io.IOException;
 
 public class IncomingToTrashBinTest extends SeleniumBaseTest {
 
-    @SuppressWarnings("checkstyle:VariableDeclarationUsageDistance")
     @Test
-    public void successfulRoutingTest() {
+    public void successfulRoutingTest()  {
 
         var entryPage = new EntryPage(driver);
         entryPage.open();

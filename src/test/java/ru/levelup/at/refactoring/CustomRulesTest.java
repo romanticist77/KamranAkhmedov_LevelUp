@@ -2,6 +2,7 @@ package ru.levelup.at.refactoring;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.UUID;
 import org.openqa.selenium.By;
@@ -15,8 +16,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CustomRulesTest extends SeleniumBaseTest {
-
-    @SuppressWarnings("checkstyle:VariableDeclarationUsageDistance")
     @Test
     public void successfulRoutingTest() {
 

@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.io.IOException;
 
 public class FramePage extends MailBasePage {
 
@@ -23,7 +24,7 @@ public class FramePage extends MailBasePage {
     }
 
     public void fillUsername() {
-        wait.until(ExpectedConditions.visibilityOf(username)).sendKeys("test94.00@mail.ru");
+        wait.until(ExpectedConditions.visibilityOf(username)).sendKeys(UtilCreds.username);
     }
 
     public void clickEnterPasswordButton() {
@@ -31,7 +32,7 @@ public class FramePage extends MailBasePage {
     }
 
     public void fillPassword() {
-        wait.until(ExpectedConditions.visibilityOf(password)).sendKeys("S{Txf7X8-U$SgiJ");
+        wait.until(ExpectedConditions.visibilityOf(password)).sendKeys(UtilCreds.password);
     }
 
     public void clickSignInButton() {

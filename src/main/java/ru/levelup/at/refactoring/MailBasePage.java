@@ -1,6 +1,10 @@
 package ru.levelup.at.refactoring;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 import java.util.UUID;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -13,6 +17,7 @@ public abstract class MailBasePage {
     protected WebDriverWait wait;
     protected UUID uuid;
     protected final String uuidAsString;
+
 
     public MailBasePage(WebDriver driver) {
         this.driver = driver;
