@@ -1,10 +1,9 @@
-package ru.levelup.at.refactoring;
+package ru.levelup.at.homework4;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.io.IOException;
 
 public class EntryPage extends MailBasePage {
 
@@ -15,13 +14,15 @@ public class EntryPage extends MailBasePage {
         super(driver);
     }
 
-    public void clickSignInButton() {
+    public EntryPage clickSignInButton() {
         wait.until(
             ExpectedConditions.elementToBeClickable(signInButton)).click();
+        return this;
     }
 
     @Override
-    public void open() {
+    public EntryPage open() {
         open("/");
+        return this;
     }
 }

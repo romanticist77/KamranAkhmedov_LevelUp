@@ -1,10 +1,9 @@
-package ru.levelup.at.refactoring;
+package ru.levelup.at.homework4;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.io.IOException;
 
 public class FramePage extends MailBasePage {
 
@@ -23,20 +22,24 @@ public class FramePage extends MailBasePage {
         return wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameModalWindow));
     }
 
-    public void fillUsername() {
+    public FramePage fillUsername() {
         wait.until(ExpectedConditions.visibilityOf(username)).sendKeys(UtilCreds.username);
+        return this;
     }
 
-    public void clickEnterPasswordButton() {
+    public FramePage clickEnterPasswordButton() {
         wait.until(ExpectedConditions.elementToBeClickable(enterPasswordButton)).click();
+        return this;
     }
 
-    public void fillPassword() {
+    public FramePage fillPassword() {
         wait.until(ExpectedConditions.visibilityOf(password)).sendKeys(UtilCreds.password);
+        return this;
     }
 
-    public void clickSignInButton() {
+    public FramePage clickSignInButton() {
         wait.until(ExpectedConditions.elementToBeClickable(signInButton)).click();
+        return this;
     }
 
     public FramePage(WebDriver driver) {
@@ -44,7 +47,8 @@ public class FramePage extends MailBasePage {
     }
 
     @Override
-    public void open() {
+    public FramePage open() {
         driver.navigate().to("/");
+        return this;
     }
 }

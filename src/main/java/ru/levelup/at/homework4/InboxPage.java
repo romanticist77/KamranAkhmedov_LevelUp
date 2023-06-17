@@ -1,11 +1,10 @@
-package ru.levelup.at.refactoring;
+package ru.levelup.at.homework4;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.io.IOException;
 
 public class InboxPage extends MailBasePage {
 
@@ -23,8 +22,6 @@ public class InboxPage extends MailBasePage {
     private WebElement saveButton;
     @FindBy(xpath = "//span[@class='notify__Посмотреть']")
     private WebElement lookDraftsButton;
-    @FindBy(xpath = "ll-sj__normal")
-    private WebElement verifySubject;
     @FindBy(xpath = "//span[contains(@title,'test94.00@mail.ru')]")
     private WebElement filledRecipient;
     @FindBy(xpath = "//div[text()='Hello, this is a testing letter.']")
@@ -48,113 +45,132 @@ public class InboxPage extends MailBasePage {
     @FindBy(xpath = "//div[text()='Корзина']")
     private WebElement trashBinButton;
 
-    public void clickTrashBinButton() {
+    public InboxPage clickTrashBinButton() {
         wait.until(ExpectedConditions.visibilityOf(
             trashBinButton)).click();
+        return this;
     }
 
-    public void clickRemoveButton() {
+    public InboxPage clickRemoveButton() {
         wait.until(ExpectedConditions.visibilityOf(
             removeButton)).click();
+        return this;
     }
 
-    public void clickToYourselfButton() {
+    public InboxPage clickToYourselfButton() {
         wait.until(ExpectedConditions.visibilityOf(
             toYourselfButton)).click();
+        return this;
     }
 
-    public void clickTestMessagesButton() {
+    public InboxPage clickTestMessagesButton() {
         wait.until(ExpectedConditions.elementToBeClickable(testButton)).click();
+        return this;
     }
 
     public WebElement getIncomingMessagesButton() {
         return wait.until(ExpectedConditions.visibilityOf(incomingMessagesButton));
     }
 
-    public void clickWriteLetterButton() {
+    public InboxPage clickWriteLetterButton() {
         wait.until(ExpectedConditions.visibilityOf(writeLetterButton)).click();
+        return this;
     }
 
-    public void fillRecipient() {
-        wait.until(ExpectedConditions.visibilityOf(recipient)).sendKeys("test94.00@mail.ru");
+    public InboxPage fillRecipient(String recipientData) {
+        wait.until(ExpectedConditions.visibilityOf(recipient)).sendKeys(recipientData);
+        return this;
     }
 
-    public void fillSubject() {
-        wait.until(ExpectedConditions.visibilityOf(subject)).sendKeys(uuidAsString);
+    public InboxPage fillSubject(String subjectId) {
+        wait.until(ExpectedConditions.visibilityOf(subject)).sendKeys(subjectId);
+        return this;
     }
 
-    public void fillTestSubject() {
-        wait.until(ExpectedConditions.visibilityOf(subject)).sendKeys("Test: " + uuidAsString);
+    public InboxPage fillTestSubject(String subjectId) {
+        wait.until(ExpectedConditions.visibilityOf(subject)).sendKeys("Test: " + subjectId);
+        return this;
     }
 
-    public void fillBody() {
-        wait.until(ExpectedConditions.visibilityOf(body)).sendKeys("Hello, this is a testing letter.");
+    public InboxPage fillBody(String loremText) {
+        wait.until(ExpectedConditions.visibilityOf(body)).sendKeys(loremText);
+        return this;
     }
 
-    public void clickSaveButton() {
+    public InboxPage clickSaveButton() {
         wait.until(ExpectedConditions.elementToBeClickable(saveButton)).click();
+        return this;
     }
 
-    public void clickLookDraftsButton() {
+    public InboxPage clickLookDraftsButton() {
         wait.until(ExpectedConditions.elementToBeClickable(lookDraftsButton)).click();
+        return this;
     }
 
-    public WebElement verifySubjectFound() {
+    public WebElement verifySubjectFound(String subjectId) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//span[text()='%s']".formatted(uuidAsString))));
+            By.xpath("//span[text()='%s']".formatted(subjectId))));
     }
 
-    public boolean verifySubjectNotFound() {
+    public boolean verifySubjectNotFound(String subjectId) {
         return wait.until(ExpectedConditions.invisibilityOfElementLocated(
-            By.xpath("//span[contains(text(),'%s')]".formatted(uuidAsString))));
+            By.xpath("//span[contains(text(),'%s')]".formatted(subjectId))));
     }
 
-    public WebElement verifySelfSubjectFound() {
+    public WebElement verifySelfSubjectFound(String subjectId) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//span[text()='Self: %s']".formatted(uuidAsString))));
+            By.xpath("//span[text()='Self: %s']".formatted(subjectId))));
     }
 
-    public WebElement verifyTestSubjectFound() {
+    public WebElement verifyTestSubjectFound(String subjectId) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//span[text()='Test: %s']".formatted(uuidAsString))));
+            By.xpath("//span[text()='Test: %s']".formatted(subjectId))));
     }
 
-    public WebElement verifySelfTestSubjectFound() {
+    public WebElement verifySelfTestSubjectFound(String subjectId) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//span[text()='Self: Test: %s']".formatted(uuidAsString))));
+            By.xpath("//span[text()='Self: Test: %s']".formatted(subjectId))));
     }
 
-    public WebElement verifyRecipientFound() {
-        return wait.until(ExpectedConditions.elementToBeClickable(filledRecipient));
+    public WebElement verifyRecipientFound(String recipientData) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//span[contains(@title,'%s')]".formatted(recipientData))));
     }
 
-    public WebElement verifyBodyFound() {
-        return wait.until(ExpectedConditions.elementToBeClickable(filledBody));
+    public WebElement verifyBodyFound(String loremText) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//div[text()='%s']".formatted(loremText))));
     }
 
-    public void clickOnSubject() {
+    public InboxPage clickOnSubject(String subjectId) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//span[text()='%s']".formatted(uuidAsString)))).click();
+            By.xpath("//span[text()='%s']".formatted(subjectId)))).click();
+        return this;
     }
 
-    public void clickSendButton() {
+    public InboxPage clickSendButton() {
         wait.until(ExpectedConditions.elementToBeClickable(sendButton)).click();
+        return this;
     }
 
-    public void clickCloseModalWindowButton() {
+    public InboxPage clickCloseModalWindowButton() {
         wait.until(ExpectedConditions.elementToBeClickable(closeModalWindowButton)).click();
+        return this;
     }
 
-    public void clickSentMessagesButton() {
+    public InboxPage clickSentMessagesButton() {
         wait.until(ExpectedConditions.elementToBeClickable(sentMessagesButton)).click();
+        return this;
     }
 
-    public void clickProfileButton() {
+    public InboxPage clickProfileButton() {
         wait.until(ExpectedConditions.elementToBeClickable(profileButton)).click();
+        return this;
     }
 
-    public void clickExitButton() {
+    public InboxPage clickExitButton() {
         wait.until(ExpectedConditions.elementToBeClickable(exitButton)).click();
+        return this;
     }
 
     public InboxPage(WebDriver driver) {
@@ -162,7 +178,8 @@ public class InboxPage extends MailBasePage {
     }
 
     @Override
-    public void open() {
+    public InboxPage open() {
         driver.navigate().to("/");
+        return this;
     }
 }
