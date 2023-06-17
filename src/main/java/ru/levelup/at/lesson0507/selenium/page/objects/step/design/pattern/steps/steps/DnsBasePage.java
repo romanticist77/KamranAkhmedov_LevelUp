@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson0507.selenium.page.objects.steps;
+package ru.levelup.at.lesson0507.selenium.page.objects.step.design.pattern.steps.steps;
 
 import java.time.Duration;
 import org.openqa.selenium.Keys;

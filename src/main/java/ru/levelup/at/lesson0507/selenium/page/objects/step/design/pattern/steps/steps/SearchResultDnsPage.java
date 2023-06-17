@@ -1,9 +1,9 @@
-package ru.levelup.at.lesson0507.selenium.page.objects.steps;
+package ru.levelup.at.lesson0507.selenium.page.objects.step.design.pattern.steps.steps;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import ru.levelup.at.lesson0507.selenium.page.objects.steps.component.DnsProductComponent;
+import ru.levelup.at.lesson0507.selenium.page.objects.step.design.pattern.steps.steps.component.DnsProductComponent;
 
 public class SearchResultDnsPage extends DnsBasePage {
 
