@@ -7,9 +7,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import ru.levelup.at.homework5.steps.CommonSteps;
 
 public class SeleniumBaseTest {
 
+    protected CommonSteps commonSteps;
     protected static final String MAIL_RU = "https://mail.ru";
 
     protected WebDriver driver;
@@ -21,6 +23,7 @@ public class SeleniumBaseTest {
         chromeOptions.addArguments("start-maximized");
         driver = new ChromeDriver(chromeOptions);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        commonSteps = new CommonSteps(driver);
     }
 
     @AfterMethod
