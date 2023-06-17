@@ -6,20 +6,23 @@ import org.testng.annotations.Test;
 
 public class EntryTest extends SeleniumBaseTest {
 
-    @SuppressWarnings("checkstyle:VariableDeclarationUsageDistance")
     @Test(dataProvider = "Email data provider", dataProviderClass = BaseDataProvider.class)
     public void successfulEntryTest(String recipientData, String subjectId, String loremText) {
 
-        var entryPage = new EntryPage(driver);
-        entryPage.open();
-        entryPage.clickSignInButton();
+        var entryPage = new EntryPage(driver)
+            .open()
+            .clickSignInButton();
+
         var framePage = new FramePage(driver);
         var switchToFrame = framePage.switchToFrame();
-        framePage.fillUsername();
-        framePage.clickEnterPasswordButton();
-        framePage.fillPassword();
-        framePage.clickSignInButton();
+
+        framePage.fillUsername()
+                 .clickEnterPasswordButton()
+                 .fillPassword()
+                 .clickSignInButton();
+
         switchToFrame.switchTo().defaultContent();
+
         var inboxPage = new InboxPage(driver);
         var incomingMessagesButton = inboxPage.getIncomingMessagesButton();
 
