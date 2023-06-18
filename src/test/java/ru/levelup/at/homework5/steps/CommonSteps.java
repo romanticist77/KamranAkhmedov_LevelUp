@@ -59,4 +59,8 @@ public class CommonSteps {
     public void closeModalWindow() {
         inboxPage.clickCloseModalWindowButton();
     }
+
+    public void removeLetter() {
+        inboxPage.clickRemoveButton();
+    }
 }

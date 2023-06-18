@@ -11,28 +11,34 @@ public class WriteLetterSteps {
         inboxPage = new InboxPage(driver);
     }
 
-    public void writeLetter() {
-        inboxPage.clickWriteLetterButton();
-    }
-
-    public void fillLetterFields(String recipientData, String subjectId, String loremText) {
-        inboxPage.fillRecipient(recipientData)
-                 .fillSubject(subjectId)
-                 .fillBody(loremText);
-    }
-
-    public void fillCustomLetterFields(String recipientData, String subjectId, String loremText) {
-        inboxPage.fillRecipient(recipientData)
-                 .fillTestSubject(subjectId)
-                 .fillBody(loremText);
-    }
-
     public void saveLetter() {
         inboxPage.clickSaveButton();
+    }
+
+    public void writeLetter(String recipientData, String subjectId, String loremText) {
+        inboxPage.clickWriteLetterButton()
+                 .fillRecipient(recipientData)
+                 .fillSubject(subjectId)
+                 .fillBody(loremText);
     }
 
     public void sendLetter() {
         inboxPage.clickSendButton();
     }
 
+    public void sendFilledLetter(String recipientData, String subjectId, String loremText) {
+        inboxPage.clickWriteLetterButton()
+                 .fillRecipient(recipientData)
+                 .fillSubject(subjectId)
+                 .fillBody(loremText)
+                 .clickSendButton();
+    }
+
+    public void sendCustomFilledLetter(String recipientData, String subjectId, String loremText) {
+        inboxPage.clickWriteLetterButton()
+                 .fillRecipient(recipientData)
+                 .fillTestSubject(subjectId)
+                 .fillBody(loremText)
+                 .clickSendButton();
+    }
 }

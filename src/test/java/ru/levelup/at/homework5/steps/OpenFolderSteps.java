@@ -18,4 +18,16 @@ public class OpenFolderSteps {
     public void openSentMessages() {
         inboxPage.clickSentMessagesButton();
     }
+
+    public void openTestMessages() {
+        inboxPage.clickTestMessagesButton();
+    }
+
+    public void openToYourselfMessages() {
+        inboxPage.clickToYourselfButton();
+    }
+
+    public void openTrashBin() {
+        inboxPage.clickTrashBinButton();
+    }
 }

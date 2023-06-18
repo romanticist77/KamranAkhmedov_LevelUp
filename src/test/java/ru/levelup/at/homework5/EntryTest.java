@@ -13,8 +13,8 @@ public class EntryTest extends SeleniumBaseTest {
         commonSteps.logIn();
         commonSteps.switchToDefault();
         commonSteps.assertSuccessfulEntry(commonSteps.getIncomingMessages());
-        writeLetterSteps.writeLetter();
-        writeLetterSteps.fillLetterFields(recipientData, subjectId, loremText);
+
+        writeLetterSteps.writeLetter(recipientData, subjectId, loremText);
         writeLetterSteps.saveLetter();
         openFolderSteps.lookDrafts();
         verifySteps.verifySubject(subjectId);
@@ -25,7 +25,6 @@ public class EntryTest extends SeleniumBaseTest {
         commonSteps.clickSubject(subjectId);
         writeLetterSteps.sendLetter();
         commonSteps.closeModalWindow();
-
         verifySteps.verifyNoSubject(subjectId);
 
         System.out.println("Drafts. Target subject is not found: " + verifySteps.noSubject);

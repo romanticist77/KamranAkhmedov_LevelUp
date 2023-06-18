@@ -16,7 +16,7 @@
             <id>all-page-object-tests-suite</id>
             <properties>
                <suite.xml>
-                   ${project.build.directory}/test-classes/ru/levelup/at/homework4/AllPageObjectTestsSuite.xml
+                   ${project.build.directory}/test-classes/ru/levelup/at/homework5/AllStepsDesignPaternTestsSuite.xml
                </suite.xml>
             </properties>
         </profile>

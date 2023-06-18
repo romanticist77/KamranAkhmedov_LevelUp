@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="All Steps Design Patern Tests Suite">
+    <test name="All Steps Design Patern Tests Suite">
+        <classes>
+            <class name="ru.levelup.at.homework5.CustomRulesTest"/>
+            <class name="ru.levelup.at.homework5.EntryTest"/>
+            <class name="ru.levelup.at.homework5.IncomingToTrashBinTest"/>
+        </classes>
+    </test>
+</suite>

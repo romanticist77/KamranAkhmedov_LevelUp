@@ -1,63 +1,42 @@
 package ru.levelup.at.homework5;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.testng.annotations.Test;
-import ru.levelup.at.homework4.EntryPage;
-import ru.levelup.at.homework4.FramePage;
-import ru.levelup.at.homework4.InboxPage;
 
 public class IncomingToTrashBinTest extends SeleniumBaseTest {
 
     @Test(dataProvider = "Email data provider", dataProviderClass = BaseDataProvider.class)
     public void successfulRoutingTest(String recipientData, String subjectId, String loremText) {
 
-        var entryPage = new EntryPage(driver);
+        commonSteps.openWebsite();
+        commonSteps.clickSignInButton();
+        commonSteps.switchToFrame();
+        commonSteps.logIn();
+        commonSteps.switchToDefault();
+        commonSteps.assertSuccessfulEntry(commonSteps.getIncomingMessages());
 
-        entryPage.open();
-        entryPage.clickSignInButton();
+        writeLetterSteps.sendFilledLetter(recipientData, subjectId, loremText);
 
-        var framePage = new FramePage(driver);
-        var switchToFrame = framePage.switchToFrame();
+        commonSteps.closeModalWindow();
+        openFolderSteps.openToYourselfMessages();
 
-        framePage.fillUsername()
-                 .clickEnterPasswordButton()
-                 .fillPassword()
-                 .clickSignInButton();
-        switchToFrame.switchTo().defaultContent();
+        verifySteps.verifySubject(subjectId);
+        verifySteps.subject.click();
 
-        var inboxPage = new InboxPage(driver);
-        var incomingMessagesButton = inboxPage.getIncomingMessagesButton();
+        System.out.println("Incoming. Target subject is found: " + verifySteps.subject);
 
-        assertThat(incomingMessagesButton.getText()).as("Нет ожидаемой вкладки на странице").contains("Входящие");
+        verifySteps.verifyRecipient(recipientData);
+        verifySteps.verifyBody(loremText);
 
-        inboxPage.clickWriteLetterButton()
-                 .fillRecipient(recipientData)
-                 .fillSubject(subjectId)
-                 .fillBody(loremText)
-                 .clickSendButton()
-                 .clickCloseModalWindowButton()
-                 .clickToYourselfButton();
+        System.out.println("Incoming. Target recipient is found: " + verifySteps.recipient);
+        System.out.println("Incoming. Target body is found: " + verifySteps.body);
 
-        var verifySubject = inboxPage.verifySubjectFound(subjectId);
-        inboxPage.clickOnSubject(subjectId);
+        commonSteps.removeLetter();
+        openFolderSteps.openTrashBin();
+        verifySteps.verifySubject(subjectId);
 
-        System.out.println("Incoming. Target subject is found: " + verifySubject);
+        System.out.println("Trash bin. Target body is found: " + verifySteps.subject);
 
-        var verifyRecipient = inboxPage.verifyRecipientFound(recipientData);
-        var verifyBody = inboxPage.verifyBodyFound(loremText);
-
-        System.out.println("Incoming. Target recipient is found: " + verifyRecipient);
-        System.out.println("Incoming. Target body is found: " + verifyBody);
-
-        inboxPage.clickRemoveButton()
-                 .clickTrashBinButton();
-
-        verifySubject = inboxPage.verifySubjectFound(subjectId);
-
-        System.out.println("Trash bin. Target body is found: " + verifySubject);
-
-        inboxPage.clickProfileButton()
-                 .clickExitButton();
+        profileSteps.openProfileMenu();
+        profileSteps.exit();
     }
 }

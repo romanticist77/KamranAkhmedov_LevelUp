@@ -13,6 +13,8 @@ public class VerifySteps {
     }
 
     public WebElement subject;
+    public WebElement recipient;
+    public WebElement body;
     public boolean noSubject;
 
     public void verifySubject(String subjectId) {
@@ -35,23 +37,11 @@ public class VerifySteps {
         noSubject = inboxPage.verifySubjectNotFound(subjectId);
     }
 
-    //        var verifySubjectFound = inboxPage.verifySubjectFound(subjectId);
-    //
-    //        System.out.println(
-    //            "Drafts. Target subject is found: " + verifySubjectFound);
-    //
-    //        inboxPage.clickOnSubject(subjectId)
-    //                 .clickSendButton()
-    //                 .clickCloseModalWindowButton();
-    //
-    //        var verifySubjectNotFound = inboxPage.verifySubjectNotFound(subjectId);
-    //
-    //        System.out.println("Drafts. Target subject is not found: " + verifySubjectNotFound);
-    //
-    //        inboxPage.clickSentMessagesButton();
-    //        verifySubjectFound = inboxPage.verifySelfSubjectFound(subjectId);
-    //
-    //        System.out.println(
-    //            "Sent. Target subject is found: " + verifySubjectFound);
-    //
+    public void verifyRecipient(String recipientData) {
+        subject = inboxPage.verifyRecipientFound(recipientData);
+    }
+
+    public void verifyBody(String loremText) {
+        subject = inboxPage.verifyBodyFound(loremText);
+    }
 }
