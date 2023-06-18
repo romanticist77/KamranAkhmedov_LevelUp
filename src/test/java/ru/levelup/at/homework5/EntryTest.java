@@ -1,7 +1,6 @@
 package ru.levelup.at.homework5;
 
 import org.testng.annotations.Test;
-import ru.levelup.at.homework5.steps.CommonSteps;
 
 public class EntryTest extends SeleniumBaseTest {
 
@@ -26,13 +25,11 @@ public class EntryTest extends SeleniumBaseTest {
         commonSteps.logIn();
         commonSteps.switchToDefault();
         commonSteps.assertSuccessfulEntry(commonSteps.getIncomingMessages());
-        //        inboxPage.clickWriteLetterButton()
-        //                 .fillRecipient(recipientData)
-        //                 .fillSubject(subjectId)
-        //                 .fillBody(loremText)
-        //                 .clickSaveButton()
-        //                 .clickLookDraftsButton();
-        //
+        writeLetterSteps.writeLetter();
+        writeLetterSteps.fillLetterFields(recipientData, subjectId, loremText);
+        writeLetterSteps.saveLetter();
+        openFolderSteps.lookDrafts();
+
         //        var verifySubjectFound = inboxPage.verifySubjectFound(subjectId);
         //
         //        System.out.println(
@@ -52,7 +49,7 @@ public class EntryTest extends SeleniumBaseTest {
         //        System.out.println(
         //            "Sent. Target subject is found: " + verifySubjectFound);
         //
-        //        inboxPage.clickProfileButton()
-        //                 .clickExitButton();
+        profileSteps.openProfileMenu();
+        profileSteps.exit();
     }
 }
