@@ -51,4 +51,12 @@ public class CommonSteps {
     public void assertSuccessfulEntry(WebElement incomingMessagesButton) {
         assertThat(incomingMessagesButton.getText()).as("Нет ожидаемой вкладки на странице").contains("Входящие");
     }
+
+    public void clickSubject(String subjectId) {
+        inboxPage.clickOnSubject(subjectId);
+    }
+
+    public void closeModalWindow() {
+        inboxPage.clickCloseModalWindowButton();
+    }
 }

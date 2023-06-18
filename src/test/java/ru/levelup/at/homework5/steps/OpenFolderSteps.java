@@ -15,6 +15,7 @@ public class OpenFolderSteps {
         inboxPage.clickLookDraftsButton();
     }
 
-
-
+    public void openSentMessages() {
+        inboxPage.clickSentMessagesButton();
+    }
 }

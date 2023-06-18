@@ -1,11 +1,11 @@
 package ru.levelup.at.homework5;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.testng.annotations.Test;
 import ru.levelup.at.homework4.EntryPage;
 import ru.levelup.at.homework4.FramePage;
 import ru.levelup.at.homework4.InboxPage;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class CustomRulesTest extends SeleniumBaseTest {
 

@@ -13,9 +13,26 @@ public class VerifySteps {
     }
 
     public WebElement subject;
+    public boolean noSubject;
 
     public void verifySubject(String subjectId) {
         subject = inboxPage.verifySubjectFound(subjectId);
+    }
+
+    public void verifySelfSubject(String subjectId) {
+        subject = inboxPage.verifySelfSubjectFound(subjectId);
+    }
+
+    public void verifyTestSubject(String subjectId) {
+        subject = inboxPage.verifyTestSubjectFound(subjectId);
+    }
+
+    public void verifySelfTestSubject(String subjectId) {
+        subject = inboxPage.verifySelfTestSubjectFound(subjectId);
+    }
+
+    public void verifyNoSubject(String subjectId) {
+        noSubject = inboxPage.verifySubjectNotFound(subjectId);
     }
 
     //        var verifySubjectFound = inboxPage.verifySubjectFound(subjectId);
