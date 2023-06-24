@@ -2,7 +2,11 @@ package ru.levelup.at.lesson0809.api.sample;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.equalToObject;
+import static org.hamcrest.Matchers.hasEntry;
+import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.hasValue;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.iterableWithSize;
 
@@ -11,7 +15,6 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.ValidatableResponse;
 import java.util.Map;
 import java.util.Optional;
-import org.json.JSONObject;
 import org.testng.annotations.Test;
 
 public class RestAssuredSampleTest {
@@ -91,43 +94,56 @@ public class RestAssuredSampleTest {
     @Test
     public void getCommentsPathParamsTest() {
 
-        Comment oldComment = new Comment(41827, 46781, "Anjushri Saini", "saini_anjushri@sipes.example",
+        Comment oldComment = new Comment(42318, 47400, "Anjushri Saini", "saini_anjushri@sipes.example",
             "Illum quos perspiciatis. Beatae ut excepturi.");
-        Comment expectedComment = new Comment(41827, 46781, "Testrest", "Testrest@test.ru",
+        Comment expectedComment = new Comment(42318, 47400, "Testrest", "Testrest@test.ru",
             "Testrest");
 
         final var commentId = oldComment.id;
-        JSONObject requestParams = new JSONObject();
-        requestParams.put("post_id", expectedComment.postId);
-        requestParams.put("name", expectedComment.name);
-        requestParams.put("email", expectedComment.email);
-        requestParams.put("body", expectedComment.body);
 
         RestAssured.given()
                    .log().all()
                    .baseUri(BASE_URI)
                    .pathParams("commentId", commentId)
-                   .body(requestParams)
+                   .formParams(Map.of(
+                       "post_id", expectedComment.postId,
+                       "name", expectedComment.name,
+                       "email", expectedComment.email,
+                       "body", expectedComment.body
+                   ))
                    .auth()
                    .oauth2("603239379fb1f8944df90ac711c1035bb62329e7629ef72319c317e1096ac188")
                    .when()
                    .put(COMMENT_ENDPOINT)
                    .then()
                    .log().everything()
-                   .statusCode(200);
-
-        RestAssured.given()
-                   .log().all()
-                   .baseUri(BASE_URI)
-                   .queryParams(Map.of(
-                       "id", expectedComment.id,
-                       "post_id", expectedComment.postId))
-                   .when()
-                   .get(COMMENTS_ENDPOINT)
-                   .then()
-                   .log().everything()
                    .statusCode(200)
-                   .body("", hasSize(1))
-                   .body("[0]['post_id']", is(expectedComment.postId));
+                   .body("", hasEntry("post_id", expectedComment.postId))
+                   .body("name", is(expectedComment.name))
+                   .body("", hasEntry("email", expectedComment.email))
+                   .body("body", is(expectedComment.body))
+                   .body("", equalToObject(Map.of(
+                       "post_id", expectedComment.postId,
+                       "name", expectedComment.name,
+                       "email", expectedComment.email,
+                       "body", expectedComment.body,
+                       "id", expectedComment.id
+                   )))
+                   .body("", hasValue(expectedComment.postId))
+                   .body("", hasKey("post_id"));
+
+        //        RestAssured.given()
+        //                   .log().all()
+        //                   .baseUri(BASE_URI)
+        //                   .queryParams(Map.of(
+        //                       "id", expectedComment.id,
+        //                       "post_id", expectedComment.postId))
+        //                   .when()
+        //                   .get(COMMENTS_ENDPOINT)
+        //                   .then()
+        //                   .log().everything()
+        //                   .statusCode(200)
+        //                   .body("", hasSize(1))
+        //                   .body("[0]['post_id']", is(expectedComment.postId));
     }
 }
