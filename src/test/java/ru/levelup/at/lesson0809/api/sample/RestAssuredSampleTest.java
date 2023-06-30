@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson0809.api.sample;
+package api.sample;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -16,6 +16,7 @@ import io.restassured.response.ValidatableResponse;
 import java.util.Map;
 import java.util.Optional;
 import org.testng.annotations.Test;
+import ru.levelup.at.lesson0809.api.sample.Comment;
 
 public class RestAssuredSampleTest {
 
@@ -38,7 +39,8 @@ public class RestAssuredSampleTest {
     @Test
     public void getCommentsBodyAssertionTest() {
 
-        Comment expectedComment = new Comment(41837, 46789, "Sitara Agarwal", "sitara_agarwal@white.example",
+        Comment
+            expectedComment = new Comment(41837, 46789, "Sitara Agarwal", "sitara_agarwal@white.example",
             "Est qui doloribus. Et quis est. Eum eligendi suscipit.");
 
         ValidatableResponse r = RestAssured.given()
@@ -66,7 +68,8 @@ public class RestAssuredSampleTest {
     @Test
     public void getCommentsQueryParamsTest() {
 
-        Comment expectedComment = new Comment(41828, 46781, "Anjushri Saini", "saini_anjushri@sipes.example",
+        Comment
+            expectedComment = new Comment(41828, 46781, "Anjushri Saini", "saini_anjushri@sipes.example",
             "Illum quos perspiciatis. Beatae ut excepturi.");
 
         var postId = expectedComment.postId;
@@ -94,9 +97,11 @@ public class RestAssuredSampleTest {
     @Test
     public void getCommentsPathParamsTest() {
 
-        Comment oldComment = new Comment(42318, 47400, "Anjushri Saini", "saini_anjushri@sipes.example",
+        Comment
+            oldComment = new Comment(42318, 47400, "Anjushri Saini", "saini_anjushri@sipes.example",
             "Illum quos perspiciatis. Beatae ut excepturi.");
-        Comment expectedComment = new Comment(42318, 47400, "Testrest", "Testrest@test.ru",
+        Comment
+            expectedComment = new Comment(42318, 47400, "Testrest", "Testrest@test.ru",
             "Testrest");
 
         final var commentId = oldComment.id;

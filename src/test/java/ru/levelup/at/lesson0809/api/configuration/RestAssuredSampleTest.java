@@ -1,4 +1,16 @@
-package ru.levelup.at.lesson0809.api.configuration;
+package api.configuration;
+
+import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.oauth2;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.equalToObject;
+import static org.hamcrest.Matchers.hasEntry;
+import static org.hamcrest.Matchers.hasKey;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.hasValue;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.iterableWithSize;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -9,17 +21,12 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import java.util.Map;
+import java.util.Optional;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.levelup.at.lesson0809.api.sample.Comment;
-import java.util.Map;
-import java.util.Optional;
-
-import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.oauth2;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.*;
 
 public class RestAssuredSampleTest {
 
