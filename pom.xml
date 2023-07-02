@@ -14,7 +14,42 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <checkstyle.version>10.3.3</checkstyle.version>
         <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
+        <testng.version>7.8.0</testng.version>
+        <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>homework3-negative-test</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/NegativeTestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>homework3-positive-test</id>
+            <properties>
+                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/PositiveTestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>homework3-complete-test</id>
+            <properties>
+                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/CompleteTestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -49,6 +84,17 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <suiteXmlFile>${suite.xml}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
             </plugin>
         </plugins>
     </build>
