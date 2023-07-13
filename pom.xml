@@ -10,10 +10,18 @@
 
     <profiles>
         <profile>
-            <id>all-page-object-tests-suite</id>
+            <id>all-api-test-suite</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <properties>
+                <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/homework6/AllApiTestsSuite.xml
+                </suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-steps-design-pattern-tests-suite</id>
             <properties>
                 <suite.xml>
                     ${project.build.directory}/test-classes/ru/levelup/at/homework5/AllStepsDesignPaternTestsSuite.xml
@@ -21,10 +29,15 @@
             </properties>
         </profile>
         <profile>
+            <id>all-page-object-tests-suite</id>
+            <properties>
+                <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/homework4/AllPageObjectTestsSuite.xml
+                </suite.xml>
+            </properties>
+        </profile>
+        <profile>
             <id>selenium-all-tests-suite</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <suite.xml>
                     ${project.build.directory}/test-classes/ru/levelup/at/homework3/SeleniumAllTestsSuite.xml
@@ -33,23 +46,26 @@
         </profile>
         <profile>
             <id>homework3-negative-test</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
-                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/NegativeTestSuite.xml</suite.xml>
+                <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/homework2/NegativeTestSuite.xml
+                </suite.xml>
             </properties>
         </profile>
         <profile>
             <id>homework3-positive-test</id>
             <properties>
-                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/PositiveTestSuite.xml</suite.xml>
+                <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/homework2/PositiveTestSuite.xml
+                </suite.xml>
             </properties>
         </profile>
         <profile>
             <id>homework3-complete-test</id>
             <properties>
-                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/CompleteTestSuite.xml</suite.xml>
+                <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/homework2/CompleteTestSuite.xml
+                </suite.xml>
             </properties>
         </profile>
     </profiles>
@@ -66,6 +82,8 @@
         <javafaker.version>1.0.2</javafaker.version>
         <testng.version>7.8.0</testng.version>
         <assertj-core.version>3.24.2</assertj-core.version>
+        <rest-assured.version>5.3.1</rest-assured.version>
+        <jackson-databind.version>2.15.2</jackson-databind.version>
     </properties>
 
     <dependencies>
@@ -110,6 +128,23 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -190,7 +225,6 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <!--suppress UnresolvedMavenProperty -->
                         <suiteXmlFile>${suite.xml}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
