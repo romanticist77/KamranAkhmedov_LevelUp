@@ -17,7 +17,7 @@
             <id>all-page-object-tests-suite</id>
             <properties>
                <suite.xml>
-                   ${project.build.directory}/test-classes/ru/levelup/at/homework4/AllPageObjectTestsSuite.xml
+                   ${project.build.directory}/test-classes/ru/levelup/at/homework5/AllStepsDesignPaternTestsSuite.xml
                </suite.xml>
 
             <id>selenium-all-tests-suite</id>
@@ -39,7 +39,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <checkstyle.version>10.3.3</checkstyle.version>
         <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
-
         <commons-io.version>2.12.0</commons-io.version>
         <testng.version>7.8.0</testng.version>
         <selenium-java.version>4.9.1</selenium-java.version>
@@ -61,6 +60,7 @@
         <javafaker.version>1.0.2</javafaker.version>
         <assertj-core.version>3.24.2</assertj-core.version>
         <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
+
     </properties>
 
     <dependencies>
@@ -70,6 +70,7 @@
             <version>${commons-io.version}</version>
         </dependency>
         <dependency>
+
           
         <testng.version>7.8.0</testng.version>
         <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
@@ -113,6 +114,13 @@
             <version>${selenium-java.version}</version>
         </dependency>
         <dependency>
+
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
@@ -131,14 +139,18 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.24.2</version>
             <scope>compile</scope>
         </dependency>
 
+
+
             <version>${javafaker.version}</version>
         </dependency>
+
 
     </dependencies>
 
@@ -148,6 +160,18 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                            ${suite.xml}
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>
