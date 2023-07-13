@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Selenium All Tests Suite">
+    <test name="Selenium All Tests Suite">
+        <classes>
+            <class name="ru.levelup.at.homework3.CustomRulesTest"/>
+            <class name="ru.levelup.at.homework3.EntryTest"/>
+            <class name="ru.levelup.at.homework3.IncomingToTrashBinTest"/>
+        </classes>
+    </test>
+</suite>
