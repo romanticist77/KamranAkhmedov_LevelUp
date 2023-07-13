@@ -1,0 +1,538 @@
+openapi: 3.0.3
+
+info:
+  title: 'Go Rest specification'
+  description: 'REST API specification for https://gorest.co.in/ version 0'
+  version: '1.0'
+
+servers:
+  - url: https://gorest.co.in/public-api
+
+tags:
+  - name: users
+  - name: posts
+  - name: comments
+
+paths:
+  /users:
+    get:
+      description: Get all users
+      operationId: getUsers
+      tags:
+        - users
+      parameters:
+        - name: name
+          description: user's name
+          in: query
+          required: false
+          schema:
+            type: string
+            maxLength: 255
+            example: Agrata Somayaji
+        - name: email
+          description: user's email
+          in: query
+          required: false
+          schema:
+            type: string
+            maxLength: 255
+            example: somayaji_agrata@runte-beahan.net
+        - name: gender
+          description: user's gender
+          in: query
+          required: false
+          schema:
+            $ref: './gorest_specification_common.yaml#/components/schemas/userGender'
+        - name: status
+          description: user's status
+          in: query
+          required: false
+          schema:
+            $ref: './gorest_specification_common.yaml#/components/schemas/userStatus'
+        - name: page
+          description: number of viewed page
+          in: query
+          required: false
+          schema:
+            type: integer
+            example: 2
+      responses:
+        '200':
+          description: service response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListResponse'
+    post:
+      description: Creates new user record
+      operationId: createUserRecord
+      security:
+        - BearerAuth: []
+      tags:
+        - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './gorest_specification_common.yaml#/components/schemas/CreateUserData'
+      responses:
+        '200':
+          description: The request has been successfully processed. The body contains the results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+  /users/{userId}:
+    parameters:
+      - $ref: './gorest_specification_common.yaml#/components/parameters/userId'
+    get:
+      description: Returns profile data of the given user.
+      operationId: getUser
+      tags:
+        - users
+      responses:
+        '200':
+          description: The user has been successfully found. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+    put:
+      description: Fully user data update
+      operationId: updateUserFull
+      security:
+        - BearerAuth: []
+      tags:
+        - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './gorest_specification_common.yaml#/components/schemas/UpdateUserData'
+      responses:
+        '200':
+          description: The user has been updated. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+    patch:
+      description: Partial user data update
+      operationId: updateUserPartially
+      security:
+        - BearerAuth: []
+      tags:
+        - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './gorest_specification_common.yaml#/components/schemas/PatchUserData'
+      responses:
+        '200':
+          description: The user has been updated. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+    delete:
+      description: Delete profile data of the given user.
+      operationId: deleteUser
+      security:
+        - BearerAuth: []
+      tags:
+        - users
+      responses:
+        '200':
+          description: The user has been successfully deleted. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+  /posts:
+    get:
+      description: Get all posts
+      operationId: getPosts
+      tags:
+        - posts
+      parameters:
+        - name: user_id
+          description: post user's id
+          in: query
+          required: false
+          schema:
+            type: integer
+            example: 3895
+        - name: title
+          description: post title
+          in: query
+          required: false
+          schema:
+            type: string
+            maxLength: 255
+            example: Debitis cena uberrime tot molestias deporto admitto adhaero ait est conitor victus clamo odit compello adficio.
+        - name: body
+          description: post body
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: page
+          description: number of viewed page
+          in: query
+          required: false
+          schema:
+            type: integer
+            example: 2
+      responses:
+        '200':
+          description: service response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostListResponse'
+    post:
+      description: Creates new post record
+      operationId: createPostRecord
+      security:
+        - BearerAuth: []
+      tags:
+        - posts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './gorest_specification_common.yaml#/components/schemas/CreatePostData'
+      responses:
+        '200':
+          description: The request has been successfully processed. The body contains the results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+  /post/{postId}:
+    parameters:
+      - $ref: './gorest_specification_common.yaml#/components/parameters/postId'
+    get:
+      description: Returns profile data of the given user.
+      operationId: getPost
+      tags:
+        - posts
+      responses:
+        '200':
+          description: The post has been successfully found. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+    put:
+      description: Fully post data update
+      operationId: updatePostFull
+      security:
+        - BearerAuth: []
+      tags:
+        - posts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './gorest_specification_common.yaml#/components/schemas/UpdatePostData'
+      responses:
+        '200':
+          description: The post has been updated. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+    patch:
+      description: Partial post data update
+      operationId: updatePostPartially
+      security:
+        - BearerAuth: []
+      tags:
+        - posts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './gorest_specification_common.yaml#/components/schemas/PatchPostData'
+      responses:
+        '200':
+          description: The post has been updated. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+    delete:
+      description: Delete profile data of the given post.
+      operationId: deleteUser
+      security:
+        - BearerAuth: []
+      tags:
+        - posts
+      responses:
+        '200':
+          description: The post has been successfully deleted. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+  /comments:
+    get:
+      description: Get all comments
+      operationId: getComments
+      tags:
+        - comments
+      parameters:
+        - name: post_id
+          description: comment post's id
+          in: query
+          required: false
+          schema:
+            type: integer
+            example: 3895
+        - name: name
+          description: comment user name
+          in: query
+          required: false
+          schema:
+            type: string
+            maxLength: 255
+            example: Mr. Vaidehi Rana
+        - name: email
+          description: comment user email
+          in: query
+          required: false
+          schema:
+            type: string
+            example: vaidehi_mr_rana@jacobi.net
+        - name: body
+          description: comment body
+          in: query
+          required: false
+          schema:
+            type: string
+            example: Alias corporis est. Temporibus impedit et. Laudantium assumenda voluptatem.
+        - name: page
+          description: number of viewed page
+          in: query
+          required: false
+          schema:
+            type: integer
+            example: 2
+      responses:
+        '200':
+          description: service response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentListResponse'
+    post:
+      description: Creates new comment record
+      operationId: createCommentRecord
+      security:
+        - BearerAuth: []
+      tags:
+        - comments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './gorest_specification_common.yaml#/components/schemas/CreateCommentData'
+      responses:
+        '200':
+          description: The request has been successfully processed. The body contains the results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+  /comments/{commentId}:
+    parameters:
+      - $ref: './gorest_specification_common.yaml#/components/parameters/commentId'
+    get:
+      description: Returns profile data of the given comment.
+      operationId: getComment
+      tags:
+        - comments
+      responses:
+        '200':
+          description: The comment has been successfully found. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+    put:
+      description: Fully comment data update
+      operationId: updateCommentFull
+      security:
+        - BearerAuth: []
+      tags:
+        - comments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './gorest_specification_common.yaml#/components/schemas/UpdateCommentData'
+      responses:
+        '200':
+          description: The pocomment has been updated. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+    patch:
+      description: Partial comment data update
+      operationId: updateCommentPartially
+      security:
+        - BearerAuth: []
+      tags:
+        - comments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './gorest_specification_common.yaml#/components/schemas/PatchCommentData'
+      responses:
+        '200':
+          description: The comment has been updated. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+    delete:
+      description: Delete profile data of the given comment.
+      operationId: deleteUser
+      security:
+        - BearerAuth: []
+      tags:
+        - comments
+      responses:
+        '200':
+          description: The comment has been successfully deleted. The body contains the result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+
+components:
+  schemas:
+    UserListResponse:
+      description: Response containing a list of users.
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 200
+        data:
+          description: Successfully retrieved results.
+          type: array
+          items:
+            $ref: './gorest_specification_common.yaml#/components/schemas/UserData'
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: '#/components/schemas/PaginationData'
+
+    UserResponse:
+      description: Response containing a list of users.
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: './gorest_specification_common.yaml#/components/schemas/UserData'
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: '#/components/schemas/PaginationData'
+
+    PostListResponse:
+      description: Response containing a list of posts.
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 200
+        data:
+          description: Successfully retrieved results.
+          type: array
+          items:
+            $ref: './gorest_specification_common.yaml#/components/schemas/PostData'
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: '#/components/schemas/PaginationData'
+
+    PostResponse:
+      description: Response containing a list of post.
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: './gorest_specification_common.yaml#/components/schemas/PostData'
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: '#/components/schemas/PaginationData'
+
+    CommentListResponse:
+      description: Response containing a list of comments.
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 200
+        data:
+          description: Successfully retrieved results.
+          type: array
+          items:
+            $ref: './gorest_specification_common.yaml#/components/schemas/CommentData'
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: '#/components/schemas/PaginationData'
+
+    CommentResponse:
+      description: Response containing a list of post.
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 200
+        data:
+          $ref: './gorest_specification_common.yaml#/components/schemas/CommentData'
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: '#/components/schemas/PaginationData'
+
+    PaginationData:
+      type: object
+      properties:
+        total:
+          type: integer
+          example: 3856
+        pages:
+          type: integer
+          example: 88
+        page:
+          type: integer
+          example: 1
+        limit:
+          type: integer
+          example: 10
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
