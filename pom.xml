@@ -10,6 +10,16 @@
 
     <profiles>
         <profile>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <id>all-page-object-tests-suite</id>
+            <properties>
+               <suite.xml>
+                   ${project.build.directory}/test-classes/ru/levelup/at/homework4/AllPageObjectTestsSuite.xml
+               </suite.xml>
+
             <id>selenium-all-tests-suite</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -18,6 +28,7 @@
                 <suite.xml>
                     ${project.build.directory}/test-classes/ru/levelup/at/homework3/SeleniumAllTestsSuite.xml
                 </suite.xml>
+
             </properties>
         </profile>
     </profiles>
@@ -28,6 +39,22 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <checkstyle.version>10.3.3</checkstyle.version>
         <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
+
+        <commons-io.version>2.12.0</commons-io.version>
+        <testng.version>7.8.0</testng.version>
+        <selenium-java.version>4.9.1</selenium-java.version>
+        <assertj-core.version>3.24.2</assertj-core.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <dependency>
+
         <selenium-java.version>4.9.1</selenium-java.version>
         <testng.version>7.8.0</testng.version>
         <commons-io.version>2.12.0</commons-io.version>
@@ -94,6 +121,22 @@
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
+
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.8.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.24.2</version>
+            <scope>compile</scope>
+        </dependency>
+
             <version>${javafaker.version}</version>
         </dependency>
 
@@ -105,6 +148,18 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                            ${suite.xml}
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>
