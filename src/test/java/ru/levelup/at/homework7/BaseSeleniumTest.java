@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson1011.cicd.allure;
+package ru.levelup.at.homework7;
 
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;

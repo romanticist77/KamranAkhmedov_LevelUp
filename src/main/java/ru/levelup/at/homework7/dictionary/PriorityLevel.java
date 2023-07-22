@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson1011.cicd.allure.dictionary;
+package ru.levelup.at.homework7.dictionary;
 
 public enum PriorityLevel {
 

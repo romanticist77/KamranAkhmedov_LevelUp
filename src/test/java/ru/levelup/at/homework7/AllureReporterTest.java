@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson1011.cicd.allure;
+package ru.levelup.at.homework7;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,12 +14,12 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
-import ru.levelup.at.lesson1011.cicd.allure.annotations.AutomatedBy;
-import ru.levelup.at.lesson1011.cicd.allure.annotations.Priority;
-import ru.levelup.at.lesson1011.cicd.allure.dictionary.PriorityLevel;
-import ru.levelup.at.lesson1011.cicd.allure.model.UserDTO;
-import ru.levelup.at.lesson1011.cicd.allure.pages.UserBugRedLoginRegistrationPage;
-import ru.levelup.at.lesson1011.cicd.allure.pages.UserBugRedMainPage;
+import ru.levelup.at.homework7.annotations.AutomatedBy;
+import ru.levelup.at.homework7.annotations.Priority;
+import ru.levelup.at.homework7.dictionary.PriorityLevel;
+import ru.levelup.at.homework7.model.UserDTO;
+import ru.levelup.at.homework7.pages.UserBugRedLoginRegistrationPage;
+import ru.levelup.at.homework7.pages.UserBugRedMainPage;
 
 @Issues({@Issue("LUP-123"), @Issue("LUP-1234")})
 @Owner("k.akhmedov")

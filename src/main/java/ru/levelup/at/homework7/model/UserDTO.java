@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson1011.cicd.allure.model;
+package ru.levelup.at.homework7.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

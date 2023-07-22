@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson1011.cicd.allure.listeners;
+package ru.levelup.at.homework7.listeners;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;

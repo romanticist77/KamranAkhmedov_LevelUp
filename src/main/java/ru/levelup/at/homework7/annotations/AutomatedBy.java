@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson1011.cicd.allure.annotations;
+package ru.levelup.at.homework7.annotations;
 
 import io.qameta.allure.LabelAnnotation;
 import java.lang.annotation.Documented;

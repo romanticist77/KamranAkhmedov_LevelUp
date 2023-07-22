@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson1011.cicd.allure.annotations;
+package ru.levelup.at.homework7.annotations;
 
 import io.qameta.allure.Epics;
 import io.qameta.allure.LabelAnnotation;
@@ -8,7 +8,7 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import ru.levelup.at.lesson1011.cicd.allure.dictionary.PriorityLevel;
+import ru.levelup.at.homework7.dictionary.PriorityLevel;
 
 @Documented
 @Inherited

@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson1011.cicd.allure.pages;
+package ru.levelup.at.homework7.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;

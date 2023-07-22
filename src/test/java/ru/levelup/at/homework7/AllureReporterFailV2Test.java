@@ -1,4 +1,4 @@
-package ru.levelup.at.lesson1011.cicd.allure;
+package ru.levelup.at.homework7;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -13,10 +13,10 @@ import io.qameta.allure.TmsLink;
 import io.qameta.allure.TmsLinks;
 import java.util.List;
 import org.testng.annotations.Test;
-import ru.levelup.at.lesson1011.cicd.allure.annotations.AutomatedBy;
-import ru.levelup.at.lesson1011.cicd.allure.annotations.Priority;
-import ru.levelup.at.lesson1011.cicd.allure.dictionary.PriorityLevel;
-import ru.levelup.at.lesson1011.cicd.allure.pages.UserBugRedLoginRegistrationPage;
+import ru.levelup.at.homework7.annotations.AutomatedBy;
+import ru.levelup.at.homework7.annotations.Priority;
+import ru.levelup.at.homework7.dictionary.PriorityLevel;
+import ru.levelup.at.homework7.pages.UserBugRedLoginRegistrationPage;
 
 @Issues({@Issue("LUP-123"), @Issue("LUP-1234")})
 @Owner("k.akhmedov")
