@@ -37,12 +37,12 @@ public class UserBugRedLoginRegistrationPage extends UserBugRedBasePage {
         wait.until(ExpectedConditions.visibilityOf(loginField)).sendKeys(login);
     }
 
-    @Step("Заполняем поле login - {password}")
+    @Step("Заполняем поле password - {password}")
     public void fillPasswordField(final String password) {
         wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(password);
     }
 
-    @Step("Заполняем поле login - {email}")
+    @Step("Заполняем поле email - {email}")
     public void fillEmailField(final String email) {
         wait.until(ExpectedConditions.visibilityOf(emailField)).sendKeys(email);
     }
