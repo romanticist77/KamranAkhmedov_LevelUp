@@ -6,7 +6,7 @@
 
     <test name="Allure Tests">
         <packages>
-            <package name="ru.levelup.at.homework7.allure.*"/>
+            <package name="ru.levelup.at.homework7.*"/>
         </packages>
     </test>
 </suite>
