@@ -4,13 +4,9 @@ import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.rmi.Remote;
 import java.time.Duration;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
@@ -38,7 +34,7 @@ public abstract class BaseSeleniumTest {
 
         faker = new Faker();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
+        //        options.addArguments("--headless=new");
         driver = new RemoteWebDriver(url, options);
         wait = new WebDriverWait(driver, Duration.ofMillis(10000));
         context.setAttribute("driver", driver);
