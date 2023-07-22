@@ -10,10 +10,28 @@
 
     <profiles>
         <profile>
-            <id>all-page-object-tests-suite</id>
+            <id>allure-all-suite</id>
+            <properties>
+                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework7/AllureAllSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>allure-fail-suite</id>
+            <properties>
+                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework7/AllureFailSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>allure-pass-suite</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <properties>
+                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework7/AllurePassSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-page-object-tests-suite</id>
             <properties>
                 <suite.xml>
                     ${project.build.directory}/test-classes/ru/levelup/at/homework5/AllStepsDesignPaternTestsSuite.xml
@@ -22,9 +40,6 @@
         </profile>
         <profile>
             <id>selenium-all-tests-suite</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <suite.xml>
                     ${project.build.directory}/test-classes/ru/levelup/at/homework3/SeleniumAllTestsSuite.xml
@@ -33,9 +48,6 @@
         </profile>
         <profile>
             <id>homework3-negative-test</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/NegativeTestSuite.xml</suite.xml>
             </properties>
