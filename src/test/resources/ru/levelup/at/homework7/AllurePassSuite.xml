@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Allure Pass Suite">
+    <listeners>
+        <listener class-name="ru.levelup.at.homework7.listeners.AllureScreenshotAttachmentListener"/>
+    </listeners>
+
+    <test name="Allure Tests">
+        <classes>
+            <class name="ru.levelup.at.homework7.AllureReporterTest"/>
+        </classes>
+    </test>
+</suite>

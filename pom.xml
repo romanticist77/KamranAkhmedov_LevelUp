@@ -8,12 +8,57 @@
     <artifactId>Kamran-Akhmedov-level-up</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Internal repo</name>
+            <url>file://${project.basedir}</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <checkstyle.version>10.3.3</checkstyle.version>
+        <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
+        <selenium-java.version>4.9.1</selenium-java.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+        <commons-io.version>2.12.0</commons-io.version>
+        <javafaker.version>1.0.2</javafaker.version>
+        <testng.version>7.8.0</testng.version>
+        <assertj-core.version>3.24.2</assertj-core.version>
+        <allure-maven.version>2.12.0</allure-maven.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+        <aspectj.version>1.9.19</aspectj.version>
+        <allure.version>2.23.0</allure.version>
+        <lombok.version>1.18.28</lombok.version>
+    </properties>
+
     <profiles>
         <profile>
-            <id>all-api-test-suite</id>
+            <id>allure-all-suite</id>
+            <properties>
+                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework7/AllureAllSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>allure-fail-suite</id>
+            <properties>
+                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework7/AllureFailSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>allure-pass-suite</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <properties>
+                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework7/AllurePassSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-page-object-tests-suite</id>
             <properties>
                 <suite.xml>
                     ${project.build.directory}/test-classes/ru/levelup/at/homework6/AllApiTestsSuite.xml
@@ -70,23 +115,15 @@
         </profile>
     </profiles>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <checkstyle.version>10.3.3</checkstyle.version>
-        <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
-        <selenium-java.version>4.9.1</selenium-java.version>
-        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
-        <commons-io.version>2.12.0</commons-io.version>
-        <javafaker.version>1.0.2</javafaker.version>
-        <testng.version>7.8.0</testng.version>
-        <assertj-core.version>3.24.2</assertj-core.version>
-        <rest-assured.version>5.3.1</rest-assured.version>
-        <jackson-databind.version>2.15.2</jackson-databind.version>
-    </properties>
-
     <dependencies>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -117,13 +154,12 @@
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>compile</scope>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
         </dependency>
-        <dependency>
 
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -147,45 +183,54 @@
             <version>${rest-assured.version}</version>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>verify</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>
                             ${suite.xml}
                         </suiteXmlFile>
                     </suiteXmlFiles>
+                    <testFailureIgnore>true</testFailureIgnore>
+
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>
-                            ${suite.xml}
-                        </suiteXmlFile>
-                    </suiteXmlFiles>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>
-                            ${suite.xml}
-                        </suiteXmlFile>
-                    </suiteXmlFiles>
-                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -218,16 +263,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>${suite.xml}</suiteXmlFile>
-                    </suiteXmlFiles>
-                </configuration>
             </plugin>
         </plugins>
     </build>
