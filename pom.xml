@@ -74,7 +74,7 @@
             </properties>
         </profile>
         <profile>
-            <id>all-page-object-tests-suite</id>
+            <id>all-page-objects-tests-suite</id>
             <properties>
                 <suite.xml>
                     ${project.build.directory}/test-classes/ru/levelup/at/homework4/AllPageObjectTestsSuite.xml
