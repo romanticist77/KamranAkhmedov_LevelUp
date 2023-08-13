@@ -1,0 +1,237 @@
+openapi: 3.0.3
+
+info:
+  title: 'Go Rest specification'
+  description: 'REST API specification for https://gorest.co.in/ common'
+  version: '1.0'
+
+paths: { }
+
+components:
+  parameters:
+    userId:
+      description: Universally unique identifier of the user.
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 587
+
+    postId:
+      description: Universally unique identifier of the post.
+      name: postId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 587
+
+    commentId:
+      description: Universally unique identifier of the comment.
+      name: commentId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 587
+
+  schemas:
+    userGender:
+      description: user's gender
+      type: string
+      enum: [ male, female ]
+      example: 'male'
+
+    userStatus:
+      description: user's status
+      type: string
+      enum: [ inactive, active ]
+      example: 'inactive'
+
+    # User
+    UserData:
+      description: Represents the main set of a user's attributes.
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 3689
+        name:
+          type: string
+          example: 'Damodara Reddy'
+        email:
+          type: string
+          example: 'reddy_damodara@lindgren.net'
+        gender:
+          $ref: '#/components/schemas/userGender'
+        status:
+          $ref: '#/components/schemas/userStatus'
+
+    CreateUserData:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Damodara Reddy'
+        email:
+          type: string
+          example: 'reddy_damodara@lindgren.net'
+        gender:
+          $ref: '#/components/schemas/userGender'
+        status:
+          $ref: '#/components/schemas/userStatus'
+
+    UpdateUserData:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Damodara Reddy'
+        email:
+          type: string
+          example: 'reddy_damodara@lindgren.net'
+        gender:
+          $ref: '#/components/schemas/userGender'
+        status:
+          $ref: '#/components/schemas/userStatus'
+
+    PatchUserData:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Damodara Reddy'
+        email:
+          type: string
+          example: 'reddy_damodara@lindgren.net'
+        gender:
+          $ref: '#/components/schemas/userGender'
+        status:
+          $ref: '#/components/schemas/userStatus'
+
+    # Posts
+    PostData:
+      description: Represents the main set of a posts's attributes.
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 3689
+        user_id:
+          type: string
+          example: 7894
+        title:
+          type: string
+          example: 'Debitis cena uberrime tot molestias deporto admitto adhaero ait est conitor victus clamo odit compello adficio.'
+        body:
+          type: string
+          example: 'some text'
+
+    CreatePostData:
+      type: object
+      properties:
+        user_id:
+          type: string
+          example: 7894
+        title:
+          type: string
+          example: 'Debitis cena uberrime tot molestias deporto admitto adhaero ait est conitor victus clamo odit compello adficio.'
+        body:
+          type: string
+          example: 'some text'
+
+    UpdatePostData:
+      type: object
+      properties:
+        user_id:
+          type: string
+          example: 7894
+        title:
+          type: string
+          example: 'Debitis cena uberrime tot molestias deporto admitto adhaero ait est conitor victus clamo odit compello adficio.'
+        body:
+          type: string
+          example: 'some text'
+
+    PatchPostData:
+      type: object
+      properties:
+        user_id:
+          type: string
+          example: 7894
+        title:
+          type: string
+          example: 'Debitis cena uberrime tot molestias deporto admitto adhaero ait est conitor victus clamo odit compello adficio.'
+        body:
+          type: string
+          example: 'some text'
+
+    # Comments
+    CommentData:
+      description: Represents the main set of a comment's attributes.
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 3689
+        post_id:
+          type: string
+          example: 7894
+        name:
+          type: string
+          example: 'Subhasini Kocchar'
+        email:
+          type: string
+          example: 'subhasini_kocchar@grant-dare.info'
+        body:
+          type: string
+          example: 'some text'
+
+    CreateCommentData:
+      type: object
+      properties:
+        post_id:
+          type: string
+          example: 7894
+        name:
+          type: string
+          example: 'Subhasini Kocchar'
+        email:
+          type: string
+          example: 'subhasini_kocchar@grant-dare.info'
+        body:
+          type: string
+          example: 'some text'
+
+    UpdateCommentData:
+      type: object
+      properties:
+        post_id:
+          type: string
+          example: 7894
+        name:
+          type: string
+          example: 'Subhasini Kocchar'
+        email:
+          type: string
+          example: 'subhasini_kocchar@grant-dare.info'
+        body:
+          type: string
+          example: 'some text'
+
+    PatchCommentData:
+      type: object
+      properties:
+        post_id:
+          type: string
+          example: 7894
+        name:
+          type: string
+          example: 'Subhasini Kocchar'
+        email:
+          type: string
+          example: 'subhasini_kocchar@grant-dare.info'
+        body:
+          type: string
+          example: 'some text'

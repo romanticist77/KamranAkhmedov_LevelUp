@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="All API Tests Suite">
+    <test name="All API Tests Suite">
+        <packages>
+            <package name="ru.levelup.at.homework6.*"/>
+        </packages>
+    </test>
+</suite>
