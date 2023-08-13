@@ -61,7 +61,23 @@
             <id>all-page-object-tests-suite</id>
             <properties>
                 <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/homework6/AllApiTestsSuite.xml
+                </suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-steps-design-pattern-tests-suite</id>
+            <properties>
+                <suite.xml>
                     ${project.build.directory}/test-classes/ru/levelup/at/homework5/AllStepsDesignPaternTestsSuite.xml
+                </suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-page-object-tests-suite</id>
+            <properties>
+                <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/homework4/AllPageObjectTestsSuite.xml
                 </suite.xml>
             </properties>
         </profile>
@@ -76,19 +92,25 @@
         <profile>
             <id>homework3-negative-test</id>
             <properties>
-                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/NegativeTestSuite.xml</suite.xml>
+                <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/homework2/NegativeTestSuite.xml
+                </suite.xml>
             </properties>
         </profile>
         <profile>
             <id>homework3-positive-test</id>
             <properties>
-                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/PositiveTestSuite.xml</suite.xml>
+                <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/homework2/PositiveTestSuite.xml
+                </suite.xml>
             </properties>
         </profile>
         <profile>
             <id>homework3-complete-test</id>
             <properties>
-                <suite.xml>${project.build.directory}/test-classes/ru/levelup/at/homework2/CompleteTestSuite.xml</suite.xml>
+                <suite.xml>
+                    ${project.build.directory}/test-classes/ru/levelup/at/homework2/CompleteTestSuite.xml
+                </suite.xml>
             </properties>
         </profile>
     </profiles>
@@ -137,6 +159,29 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
+        </dependency>
+
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
